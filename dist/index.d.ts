@@ -1,17 +1,19 @@
-import {Button} from '@base-ui/react/button';
-import {Checkbox} from '@base-ui/react/checkbox';
-import {Combobox} from '@base-ui/react/combobox';
-import {DetailedHTMLProps, LabelHTMLAttributes, ReactNode} from 'react';
-import {Field} from '@base-ui/react/field';
-import {JSX} from 'react/jsx-runtime';
-import {Menu} from '@base-ui/react/menu';
-import {NumberField} from '@base-ui/react/number-field';
-import {Radio} from '@base-ui/react/radio';
-import {RadioGroup} from '@base-ui/react/radio-group';
-import {Select} from '@base-ui/react/select';
-import {Slider} from '@base-ui/react/slider';
-import {Switch} from '@base-ui/react/switch';
-import {Tooltip} from '@base-ui/react/tooltip';
+import { Button } from '@base-ui/react/button';
+import { Checkbox } from '@base-ui/react/checkbox';
+import { Combobox } from '@base-ui/react/combobox';
+import { DetailedHTMLProps } from 'react';
+import { Field } from '@base-ui/react/field';
+import { JSX } from 'react/jsx-runtime';
+import { LabelHTMLAttributes } from 'react';
+import { Menu } from '@base-ui/react/menu';
+import { NumberField } from '@base-ui/react/number-field';
+import { Radio } from '@base-ui/react/radio';
+import { RadioGroup } from '@base-ui/react/radio-group';
+import { ReactNode } from 'react';
+import { Select } from '@base-ui/react/select';
+import { Slider } from '@base-ui/react/slider';
+import { Switch } from '@base-ui/react/switch';
+import { Tooltip } from '@base-ui/react/tooltip';
 
 export declare function SvButton({ children, styleType, size, leftIcon, rightIcon, ...props }: Readonly<SvButtonProps>): JSX.Element;
 
