@@ -30,6 +30,11 @@ Import the library styles once in your application entry point:
 import '@streamvi/streamvi-ui-kit/style.css';
 ```
 
+To import fonts, also add the following:
+```ts
+import '@streamvi/streamvi-ui-kit/fonts.css';
+```
+
 Then import and use components:
 
 ```tsx

@@ -12,7 +12,9 @@
       "types": "./dist/index.d.ts",
       "import": "./dist/index.js"
     },
-    "./style.css": "./dist/style.css"
+    "./style.css": "./dist/style.css",
+    "./fonts.css": "./dist/fonts.css",
+    "./fonts/inter.woff2": "./dist/fonts/inter.woff2"
   },
   "files": [
     "dist"
@@ -47,8 +49,6 @@
     "@commitlint/format": "^20.5.0",
     "@eslint/js": "^10.0.1",
     "@microsoft/api-extractor": "^7.58.7",
-    "react": "^19.2.5",
-    "react-dom": "^19.2.5",
     "@rolldown/plugin-babel": "^0.2.3",
     "@storybook/addon-a11y": "^10.3.6",
     "@storybook/addon-docs": "^10.3.6",
@@ -77,6 +77,8 @@
     "playwright": "^1.59.1",
     "prettier": "3.8.3",
     "prettier-plugin-organize-imports": "^4.3.0",
+    "react": "^19.2.5",
+    "react-dom": "^19.2.5",
     "storybook": "^10.3.6",
     "storybook-dark-mode": "^5.0.0",
     "typescript": "~6.0.2",

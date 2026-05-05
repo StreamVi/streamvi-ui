@@ -30,6 +30,12 @@ npm install react react-dom
 import '@streamvi/streamvi-ui-kit/style.css';
 ```
 
+Для импорта шрифтов добавьте также следующее:
+
+```ts
+import '@streamvi/streamvi-ui-kit/fonts.css';
+```
+
 После этого можно импортировать и использовать компоненты:
 
 ```tsx
