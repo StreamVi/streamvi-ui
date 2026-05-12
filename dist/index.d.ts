@@ -130,6 +130,7 @@ export declare function SvSelect({ itemList, label, innerProps, ...props }: Read
 export declare interface SvSelectItemData {
     value: string;
     label: ReactNode;
+    disabled?: boolean;
     itemListProps?: Partial<{
         item: Select.Item.Props;
         itemIndicator: Select.ItemIndicator.Props;

@@ -15,26 +15,26 @@ import { Switch as y } from "@base-ui/react/switch";
 import { Combobox as b } from "@base-ui/react/combobox";
 import { Tooltip as x } from "@base-ui/react/tooltip";
 var S = {
-	Button: "_Button_1t7km_10",
-	ButtonContent: "_ButtonContent_1t7km_54",
-	Pending: "_Pending_1t7km_63",
-	load: "_load_1t7km_1",
-	TextForm: "_TextForm_1t7km_87",
-	IconForm: "_IconForm_1t7km_91",
-	SizeSmallText: "_SizeSmallText_1t7km_95",
-	SizeDefaultText: "_SizeDefaultText_1t7km_99",
-	SizeSmallIcon: "_SizeSmallIcon_1t7km_103",
-	SizeDefaultIcon: "_SizeDefaultIcon_1t7km_107",
-	TypePrimary: "_TypePrimary_1t7km_111",
-	TypeSecondary: "_TypeSecondary_1t7km_122",
-	TypeImportant: "_TypeImportant_1t7km_135",
-	TypeTooltip: "_TypeTooltip_1t7km_148",
-	TypeServer: "_TypeServer_1t7km_161",
-	TypeServerSecondary: "_TypeServerSecondary_1t7km_171",
-	TypeNerf: "_TypeNerf_1t7km_181",
-	TypeNerfSecondary: "_TypeNerfSecondary_1t7km_193",
-	TypeText: "_TypeText_1t7km_205",
-	TypeWebinar: "_TypeWebinar_1t7km_217"
+	Button: "_Button_1fwpe_10",
+	ButtonContent: "_ButtonContent_1fwpe_54",
+	Pending: "_Pending_1fwpe_63",
+	load: "_load_1fwpe_1",
+	TextForm: "_TextForm_1fwpe_87",
+	IconForm: "_IconForm_1fwpe_91",
+	SizeSmallText: "_SizeSmallText_1fwpe_95",
+	SizeDefaultText: "_SizeDefaultText_1fwpe_99",
+	SizeSmallIcon: "_SizeSmallIcon_1fwpe_103",
+	SizeDefaultIcon: "_SizeDefaultIcon_1fwpe_107",
+	TypePrimary: "_TypePrimary_1fwpe_111",
+	TypeSecondary: "_TypeSecondary_1fwpe_122",
+	TypeImportant: "_TypeImportant_1fwpe_135",
+	TypeTooltip: "_TypeTooltip_1fwpe_148",
+	TypeServer: "_TypeServer_1fwpe_161",
+	TypeServerSecondary: "_TypeServerSecondary_1fwpe_172",
+	TypeNerf: "_TypeNerf_1fwpe_183",
+	TypeNerfSecondary: "_TypeNerfSecondary_1fwpe_196",
+	TypeText: "_TypeText_1fwpe_209",
+	TypeWebinar: "_TypeWebinar_1fwpe_221"
 };
 //#endregion
 //#region src/components/sv-button/sv-button.tsx
@@ -99,11 +99,11 @@ function E({ disabled: e, labelContent: o, innerProps: s = {}, ...c }) {
 	});
 }
 var D = {
-	Field: "_Field_1i8hj_1",
-	Label: "_Label_1i8hj_10",
-	Input: "_Input_1i8hj_17",
-	Error: "_Error_1i8hj_47",
-	Description: "_Description_1i8hj_53"
+	Field: "_Field_12j89_1",
+	Label: "_Label_12j89_10",
+	Input: "_Input_12j89_17",
+	Error: "_Error_12j89_47",
+	Description: "_Description_12j89_53"
 };
 //#endregion
 //#region src/components/sv-field/sv-field.tsx
@@ -125,6 +125,7 @@ function O({ error: e, description: i, label: a, innerProps: o = {}, ...s }) {
 			}),
 			/* @__PURE__ */ n(u.Error, {
 				className: t(D.Error, h),
+				match: !!e,
 				...g,
 				children: e
 			}),
@@ -183,11 +184,11 @@ function A({ triggerButton: e, disabled: i, itemList: a, innerProps: o = {}, ...
 	});
 }
 var j = {
-	Field: "_Field_6nad9_1",
-	Group: "_Group_6nad9_12",
-	Input: "_Input_6nad9_18",
-	Decrement: "_Decrement_6nad9_56",
-	Increment: "_Increment_6nad9_57"
+	Field: "_Field_1uvn6_1",
+	Group: "_Group_1uvn6_12",
+	Input: "_Input_1uvn6_18",
+	Decrement: "_Decrement_1uvn6_56",
+	Increment: "_Increment_1uvn6_57"
 };
 //#endregion
 //#region src/components/sv-number-field/sv-number-field.tsx
@@ -210,7 +211,7 @@ function M({ isInvalid: e, innerProps: i = {}, ...a }) {
 				}),
 				/* @__PURE__ */ n(f.Input, {
 					className: t(j.Input, p),
-					"data-invalid": e,
+					"aria-invalid": e,
 					...m
 				}),
 				/* @__PURE__ */ n(f.Increment, {
@@ -318,22 +319,23 @@ function I({ itemList: e, label: i, innerProps: s = {}, ...c }) {
 						children: /* @__PURE__ */ n(_.List, {
 							className: t(F.List, S),
 							...C,
-							children: e.map(({ label: e, value: i, itemListProps: o = {} }) => {
-								let { className: s, ...c } = o.item || {}, { className: l, ...u } = o.itemIndicator || {}, { className: d, ...f } = o.itemText || {};
+							children: e.map(({ label: e, value: i, disabled: o, itemListProps: s = {} }) => {
+								let { className: c, ...l } = s.item || {}, { className: u, ...d } = s.itemIndicator || {}, { className: f, ...p } = s.itemText || {};
 								return /* @__PURE__ */ r(_.Item, {
 									value: i,
-									className: t(F.Item, w, s),
+									className: t(F.Item, w, c),
+									disabled: o,
 									...T,
-									...c,
+									...l,
 									children: [/* @__PURE__ */ n(_.ItemText, {
-										className: t(F.ItemText, O, d),
+										className: t(F.ItemText, O, f),
 										...k,
-										...f,
+										...p,
 										children: e
 									}), /* @__PURE__ */ n(_.ItemIndicator, {
-										className: t(F.ItemIndicator, E, l),
+										className: t(F.ItemIndicator, E, u),
 										...D,
-										...u,
+										...d,
 										children: /* @__PURE__ */ n(a, {
 											size: 16,
 											color: "#828282"
@@ -395,13 +397,13 @@ function B({ className: e, innerProps: r, ...i }) {
 	});
 }
 var V = {
-	wrapper: "_wrapper_1fk9y_1",
-	inputGroup: "_inputGroup_1fk9y_7",
-	chips: "_chips_1fk9y_33",
-	chip: "_chip_1fk9y_33",
-	chipRemove: "_chipRemove_1fk9y_56",
-	input: "_input_1fk9y_7",
-	clear: "_clear_1fk9y_70"
+	wrapper: "_wrapper_10itz_1",
+	inputGroup: "_inputGroup_10itz_7",
+	chips: "_chips_10itz_33",
+	chip: "_chip_10itz_33",
+	chipRemove: "_chipRemove_10itz_56",
+	input: "_input_10itz_7",
+	clear: "_clear_10itz_70"
 };
 //#endregion
 //#region src/components/sv-tag-input/sv-tag-input.tsx
@@ -434,7 +436,7 @@ function H({ isInvalid: e, innerProps: i = {}, defaultState: a = [], defaultInpu
 			...f,
 			children: /* @__PURE__ */ r(b.InputGroup, {
 				className: t("sv-font", V.inputGroup, h),
-				"data-invalid": e,
+				"aria-invalid": e,
 				...g,
 				children: [/* @__PURE__ */ r(b.Chips, {
 					className: t(V.chips, _),
