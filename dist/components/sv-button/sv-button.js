@@ -33,7 +33,7 @@ var f = c(function(c, f) {
 	}), v = a({
 		props: _,
 		name: "MuiButton"
-	}), { appearance: y = "default", variant: b = "contained", color: x = "primary", size: S = "medium", disableElevation: C = !0, loading: w = null, loadingIndicator: T, loadingPosition: E, children: D, className: O, id: k, ...A } = v, j = u(), M = k ?? j, N = v.color !== void 0, P = T !== void 0 || E !== void 0 ? "mui" : b === "text" ? "text" : b === "contained" && (y === "default" && x === "primary" || y === "secondary" && !N) ? "stripes" : "mui", F = {
+	}), { appearance: y = "default", variant: b = "contained", color: x = y === "success" ? "success" : "primary", size: S = "medium", disableElevation: C = !0, loading: w = null, loadingIndicator: T, loadingPosition: E, children: D, className: O, id: k, ...A } = v, j = u(), M = k ?? j, N = v.color !== void 0, P = T !== void 0 || E !== void 0 ? "mui" : b === "text" ? "text" : b === "contained" && (y === "default" && x === "primary" || y === "secondary" && !N) ? "stripes" : "mui", F = {
 		...v,
 		appearance: y,
 		variant: b,

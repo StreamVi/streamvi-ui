@@ -16,7 +16,7 @@ The application must provide compatible peer dependencies:
 
 | Package                                | Supported range |
 | -------------------------------------- | --------------- |
-| `react`, `react-dom`                   | `^19.2.0`       |
+| `react`, `react-dom`                   | `^19.3.0`       |
 | `@mui/material`, `@mui/icons-material` | `^9.5.0`        |
 | `@emotion/react`                       | `^11.14.0`      |
 | `@emotion/styled`                      | `^11.14.1`      |
@@ -24,10 +24,14 @@ The application must provide compatible peer dependencies:
 npm 7+ installs required peer dependencies automatically unless this behavior is disabled. To install them explicitly:
 
 ```sh
-npm install react@^19.2.0 react-dom@^19.2.0 @mui/material@^9.5.0 @mui/icons-material@^9.5.0 @emotion/react@^11.14.0 @emotion/styled@^11.14.1
+npm install react@^19.3.0 react-dom@^19.3.0 @mui/material@^9.5.0 @mui/icons-material@^9.5.0 @emotion/react@^11.14.0 @emotion/styled@^11.14.1
 ```
 
 In an application that already uses MUI and Emotion, keep its direct dependencies and align their versions with these ranges so the application and UI Kit share compatible instances.
+
+The minimum supported React and React DOM version is 19.3.0. Upgrade both packages together when migrating from React 19.2.
+
+TypeScript declarations support `moduleResolution: Bundler` and `NodeNext`. With MUI 9.5, combining `exactOptionalPropertyTypes: true` with `skipLibCheck: false` exposes errors in MUI's Collapse/Fade declarations. Use `skipLibCheck: true` with exact optional checking, or disable `exactOptionalPropertyTypes` when checking all dependency declarations. The library's package checks cover both configurations.
 
 If the package is not available on npm, install a version from GitHub that includes the built package:
 
@@ -423,6 +427,8 @@ The package provides ES modules and TypeScript declarations. Use named imports f
 
 ## Upgrading from the previous version
 
+React and React DOM 19.3.0 or later within React 19 are required. Update the application's React packages and React type packages together before installing this release.
+
 **This is a breaking update.** The move from Base UI to Material UI changes component APIs and the customization model. Review existing usages and CSS selectors before upgrading; the old Base UI DOM structure and types are not supported contracts of this version.
 
 | Previous usage                                                                  | Current API / required change                                                                                                                                                                                               |
@@ -442,6 +448,10 @@ The package provides ES modules and TypeScript declarations. Use named imports f
 | Menu `triggerButton`, automatic close after selection, `itemClick` close reason | Render a separate trigger; control `anchorEl/open/onClose` and close from item `onClick`. Remove handling of `itemClick`.                                                                                                   |
 
 Compare event handlers as well as prop names: `SvField` receives an event, `SvNumberField` receives `(event, numberOrNull)`, and `SvTagInput` follows MUI Autocomplete callbacks. See the examples above and [Storybook](https://ui.streamvi.io) for component usage.
+
+## License
+
+The library is distributed under the MIT license; see `LICENSE` in the package. The bundled Inter font remains under the SIL Open Font License 1.1, included at `dist/fonts/OFL.txt`. See `THIRD-PARTY-NOTICES.md` for attribution and third-party notices.
 
 ## Resources
 

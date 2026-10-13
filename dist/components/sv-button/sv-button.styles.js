@@ -12,7 +12,7 @@ var o = 24 / Math.sin(Math.PI / 3), s = {
 	whiteSpace: "nowrap"
 };
 function c(c, l) {
-	let u = (c.vars ?? c).palette, d = e(c), { appearance: f, variant: p, size: m, color: h = "primary", hasColor: g, loading: _, loadingMode: v, loadingPosition: y } = l, b = f !== "default" && !g, x = p === "text", S = i(m), { main: C, hover: w, contrast: T } = t(c, h), E = h === "inherit" ? u.action.hover : C, D = h === "inherit" ? u.action.selected : w, O = T, k = O, A = C, j = w;
+	let u = (c.vars ?? c).palette, d = e(c), { appearance: f, variant: p, size: m, color: h = "primary", hasColor: g, loading: _, loadingMode: v, loadingPosition: y } = l, b = f !== "default" && f !== "success" && !g, x = p === "text", S = i(m), { main: C, hover: w, contrast: T } = t(c, h), E = h === "inherit" ? u.action.hover : C, D = h === "inherit" ? u.action.selected : w, O = p === "contained" && h === "success" ? u.common.white : T, k = O, A = C, j = w;
 	if (b) {
 		switch (f) {
 			case "secondary":

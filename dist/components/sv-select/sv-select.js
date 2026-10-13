@@ -1,4 +1,4 @@
-import { MenuPaper as e, menuItemSx as t } from "./menu-paper.js";
+import { menuItemSx as e, menuPaperSx as t } from "./menu-paper.js";
 import { SelectOptionContent as n } from "./select-option-content.js";
 import { selectStyles as r } from "./sv-select.styles.js";
 import { useDefaultProps as i } from "@mui/material/DefaultPropsProvider";
@@ -13,7 +13,7 @@ import h from "@mui/icons-material/KeyboardArrowDown";
 import g from "@mui/material/Select";
 //#region src/components/sv-select/sv-select.tsx
 function _(n) {
-	let l = p(23), _;
+	let l = p(21), _;
 	l[0] === Symbol.for("react.memo_cache_sentinel") ? (_ = {
 		props: {},
 		name: "MuiSelect"
@@ -42,28 +42,32 @@ function _(n) {
 		props: {},
 		name: "MuiMenuItem"
 	}, l[6] = L) : L = l[6];
-	let R = i(L), z = f(), B = M.color ?? z?.color ?? "primary", V = M.variant ?? z?.variant ?? "outlined", H = M.size ?? z?.size ?? "medium", U = u(M.input) ? M.input.props : void 0, W = g, G = k ?? (F ? void 0 : h), K;
-	l[7] === E ? K = l[8] : (K = a("SvSelect-root", E), l[7] = E, l[8] = K);
-	let q = o(!M.input && !F && V === "outlined" && H === "medium" && r(B, M.label != null), b.sx, S.sx, !M.slotProps && U?.slotProps?.root?.sx, U?.sx, M.slotProps?.root?.sx, n.sx), J = O?.slots, Y;
-	l[9] === J ? Y = l[10] : (Y = {
-		paper: e,
-		...J
-	}, l[9] = J, l[10] = Y);
-	let X;
-	l[11] !== O || l[12] !== Y ? (X = {
+	let R = i(L), z = f(), B = M.color ?? z?.color ?? "primary", V = M.variant ?? z?.variant ?? "outlined", H = M.size ?? z?.size ?? "medium", U = u(M.input) ? M.input.props : void 0, W = O?.slotProps?.paper, G = g, K = k ?? (F ? void 0 : h), q;
+	l[7] === E ? q = l[8] : (q = a("SvSelect-root", E), l[7] = E, l[8] = q);
+	let J = o(!M.input && !F && V === "outlined" && H === "medium" && r(B, M.label != null), b.sx, S.sx, !M.slotProps && U?.slotProps?.root?.sx, U?.sx, M.slotProps?.root?.sx, n.sx), Y;
+	l[9] !== O || l[10] !== W ? (Y = O?.slots?.paper ? O : {
 		...O,
-		slots: Y
-	}, l[11] = O, l[12] = Y, l[13] = X) : X = l[13];
-	let Z = F ? I : s.map(I, (e) => u(e) && e.type === m ? c(e, { sx: o(t, R.sx, e.props.sx) }) : e), Q;
-	return l[14] !== W || l[15] !== F || l[16] !== M || l[17] !== X || l[18] !== Z || l[19] !== G || l[20] !== K || l[21] !== q ? (Q = /* @__PURE__ */ d(W, {
+		slotProps: {
+			...O?.slotProps,
+			paper: (e) => {
+				let n = typeof W == "function" ? W(e) : W;
+				return {
+					...n,
+					sx: o(t, n?.sx)
+				};
+			}
+		}
+	}, l[9] = O, l[10] = W, l[11] = Y) : Y = l[11];
+	let X = F ? I : s.map(I, (t) => u(t) && t.type === m ? c(t, { sx: o(e, R.sx, t.props.sx) }) : t), Z;
+	return l[12] !== G || l[13] !== F || l[14] !== M || l[15] !== K || l[16] !== q || l[17] !== J || l[18] !== Y || l[19] !== X ? (Z = /* @__PURE__ */ d(G, {
 		...M,
 		native: F,
-		IconComponent: G,
-		className: K,
-		sx: q,
-		MenuProps: X,
-		children: Z
-	}), l[14] = W, l[15] = F, l[16] = M, l[17] = X, l[18] = Z, l[19] = G, l[20] = K, l[21] = q, l[22] = Q) : Q = l[22], Q;
+		IconComponent: K,
+		className: q,
+		sx: J,
+		MenuProps: Y,
+		children: X
+	}), l[12] = G, l[13] = F, l[14] = M, l[15] = K, l[16] = q, l[17] = J, l[18] = Y, l[19] = X, l[20] = Z) : Z = l[20], Z;
 }
 function v(e, t) {
 	return /* @__PURE__ */ l(m, {

@@ -12,92 +12,98 @@ import x from "@mui/material/ListItemText";
 import S from "@mui/material/ListSubheader";
 import C from "@mui/material/Menu";
 import w from "@mui/material/MenuItem";
+import { useTheme as T } from "@mui/material/styles";
 //#region src/components/sv-menu/sv-menu.tsx
-function T(e, t) {
-	return u.map(e, (e) => h(e) ? e.type === d ? f(e, { children: T(e.props.children, t) }) : e.type === w ? f(e, {
+function E(e, t) {
+	return u.map(e, (e) => h(e) ? e.type === d ? f(e, { children: E(e.props.children, t) }) : e.type === w ? f(e, {
 		className: c("SvMenu-item", t.className, e.props.className),
 		sx: l(n, t.sx, e.props.sx)
 	}) : e : e);
 }
-var E = m(function(n, u) {
-	let d = y(54), f;
-	d[0] === Symbol.for("react.memo_cache_sentinel") ? (f = {
+var D = m(function(n, u) {
+	let d = y(60), f = T(), p;
+	d[0] === Symbol.for("react.memo_cache_sentinel") ? (p = {
 		props: {},
 		name: "MuiMenu"
-	}, d[0] = f) : f = d[0];
-	let p = s(f), m;
-	d[1] === Symbol.for("react.memo_cache_sentinel") ? (m = {
+	}, d[0] = p) : p = d[0];
+	let m = s(p), h;
+	d[1] === Symbol.for("react.memo_cache_sentinel") ? (h = {
 		props: {},
 		name: "SvMenu"
-	}, d[1] = m) : m = d[1];
-	let h = s(m), b;
-	d[2] === n ? b = d[3] : (b = {
+	}, d[1] = h) : h = d[1];
+	let b = s(h), x;
+	d[2] === n ? x = d[3] : (x = {
 		props: n,
 		name: "SvMenu"
-	}, d[2] = n, d[3] = b);
-	let x = s(b), w;
-	d[4] === x ? w = d[5] : (w = {
-		props: x,
+	}, d[2] = n, d[3] = x);
+	let w = s(x), D;
+	d[4] === w ? D = d[5] : (D = {
+		props: w,
 		name: "MuiMenu"
-	}, d[4] = x, d[5] = w);
-	let E = s(w), k, A, j, M, N;
-	if (d[6] !== E) {
-		let { items: e, children: t, header: n, footer: r, className: i, sx: a, slotProps: o, ...s } = E;
-		j = n, A = r, k = i, N = o, M = s, d[6] = E, d[7] = k, d[8] = A, d[9] = j, d[10] = M, d[11] = N;
-	} else k = d[7], A = d[8], j = d[9], M = d[10], N = d[11];
-	let P;
-	d[12] === Symbol.for("react.memo_cache_sentinel") ? (P = {
+	}, d[4] = w, d[5] = D);
+	let A = s(D), j, M, N, P, F;
+	if (d[6] !== A) {
+		let { items: e, children: t, header: n, footer: r, className: i, sx: a, slotProps: o, ...s } = A;
+		N = n, M = r, j = i, F = o, P = s, d[6] = A, d[7] = j, d[8] = M, d[9] = N, d[10] = P, d[11] = F;
+	} else j = d[7], M = d[8], N = d[9], P = d[10], F = d[11];
+	let I;
+	d[12] === Symbol.for("react.memo_cache_sentinel") ? (I = {
 		props: {},
 		name: "MuiMenuItem"
-	}, d[12] = P) : P = d[12];
-	let F = s(P), I, L;
-	if (d[13] !== A || d[14] !== j || d[15] !== n || d[16] !== F || d[17] !== p || d[18] !== h) {
+	}, d[12] = I) : I = d[12];
+	let L = s(I), R, z;
+	if (d[13] !== M || d[14] !== N || d[15] !== n || d[16] !== L || d[17] !== m || d[18] !== b) {
 		let e = [
 			n,
-			h,
-			p
-		].find(D), t = e?.items === void 0 ? e?.children : e.items.map(O);
-		I = j != null || A != null, L = T(t, F), d[13] = A, d[14] = j, d[15] = n, d[16] = F, d[17] = p, d[18] = h, d[19] = I, d[20] = L;
-	} else I = d[19], L = d[20];
-	let R = L, z;
-	d[21] === k ? z = d[22] : (z = c("SvMenu-root", k), d[21] = k, d[22] = z);
-	let B;
-	d[23] !== n.sx || d[24] !== p.sx || d[25] !== h.sx ? (B = l(a, p.sx, h.sx, n.sx), d[23] = n.sx, d[24] = p.sx, d[25] = h.sx, d[26] = B) : B = d[26];
-	let V = N?.paper, H;
-	d[27] !== I || d[28] !== V ? (H = v(V, {
+			b,
+			m
+		].find(O), t = e?.items === void 0 ? e?.children : e.items.map(k);
+		R = N != null || M != null, z = E(t, L), d[13] = M, d[14] = N, d[15] = n, d[16] = L, d[17] = m, d[18] = b, d[19] = R, d[20] = z;
+	} else R = d[19], z = d[20];
+	let B = z, V;
+	d[21] !== P.anchorOrigin || d[22] !== P.anchorReference || d[23] !== P.transformOrigin || d[24] !== f ? (V = (P.anchorReference ?? "anchorEl") === "anchorEl" && P.anchorOrigin === void 0 && P.transformOrigin === void 0 ? { transformOrigin: {
+		vertical: -8,
+		horizontal: f.direction === "rtl" ? "right" : "left"
+	} } : {}, d[21] = P.anchorOrigin, d[22] = P.anchorReference, d[23] = P.transformOrigin, d[24] = f, d[25] = V) : V = d[25];
+	let H = V, U;
+	d[26] === j ? U = d[27] : (U = c("SvMenu-root", j), d[26] = j, d[27] = U);
+	let W;
+	d[28] !== n.sx || d[29] !== m.sx || d[30] !== b.sx ? (W = l(a, m.sx, b.sx, n.sx), d[28] = n.sx, d[29] = m.sx, d[30] = b.sx, d[31] = W) : W = d[31];
+	let G = F?.paper, K;
+	d[32] !== R || d[33] !== G ? (K = v(G, {
 		className: "SvMenu-paper",
-		sx: l(i, I && {
+		sx: l(i, R && {
 			display: "flex",
 			flexDirection: "column",
 			overflow: "hidden"
 		})
-	}), d[27] = I, d[28] = V, d[29] = H) : H = d[29];
-	let U = N?.list, W;
-	d[30] !== I || d[31] !== U ? (W = v(U, {
+	}), d[32] = R, d[33] = G, d[34] = K) : K = d[34];
+	let q = F?.list, J;
+	d[35] !== R || d[36] !== q ? (J = v(q, {
 		className: "SvMenu-list",
-		sx: l(r, I && {
+		sx: l(r, R && {
 			display: "flex",
 			flexDirection: "column",
 			minHeight: 0,
 			overflow: "hidden"
 		})
-	}), d[30] = I, d[31] = U, d[32] = W) : W = d[32];
-	let G;
-	d[33] !== N || d[34] !== W || d[35] !== H ? (G = {
-		...N,
-		paper: H,
-		list: W
-	}, d[33] = N, d[34] = W, d[35] = H, d[36] = G) : G = d[36];
-	let K;
-	d[37] === j ? K = d[38] : (K = j != null && /* @__PURE__ */ g(S, {
+	}), d[35] = R, d[36] = q, d[37] = J) : J = d[37];
+	let Y;
+	d[38] !== F || d[39] !== K || d[40] !== J ? (Y = {
+		...F,
+		paper: K,
+		list: J
+	}, d[38] = F, d[39] = K, d[40] = J, d[41] = Y) : Y = d[41];
+	let X;
+	d[42] === N ? X = d[43] : (X = N != null && /* @__PURE__ */ g(S, {
 		role: "presentation",
 		disableSticky: !0,
 		className: "SvMenu-header",
 		sx: t,
-		children: j
-	}), d[37] = j, d[38] = K);
-	let q;
-	d[39] !== R || d[40] !== I ? (q = I ? /* @__PURE__ */ g(o, {
+		children: N
+	}), d[42] = N, d[43] = X);
+	let Z;
+	d[44] !== B || d[45] !== R ? (Z = R ? /* @__PURE__ */ g(o, {
 		component: "li",
 		role: "none",
 		className: "SvMenu-body",
@@ -111,11 +117,11 @@ var E = m(function(n, u) {
 			component: "ul",
 			role: "group",
 			sx: e,
-			children: R
+			children: B
 		})
-	}) : R, d[39] = R, d[40] = I, d[41] = q) : q = d[41];
-	let J;
-	d[42] !== A || d[43] !== F ? (J = A != null && /* @__PURE__ */ g(o, {
+	}) : B, d[44] = B, d[45] = R, d[46] = Z) : Z = d[46];
+	let Q;
+	d[47] !== M || d[48] !== L ? (Q = M != null && /* @__PURE__ */ g(o, {
 		component: "li",
 		role: "none",
 		className: "SvMenu-footer",
@@ -127,27 +133,28 @@ var E = m(function(n, u) {
 			component: "ul",
 			role: "group",
 			sx: e,
-			children: T(A, F)
+			children: E(M, L)
 		})
-	}), d[42] = A, d[43] = F, d[44] = J) : J = d[44];
-	let Y;
-	return d[45] !== M || d[46] !== u || d[47] !== G || d[48] !== K || d[49] !== q || d[50] !== J || d[51] !== z || d[52] !== B ? (Y = /* @__PURE__ */ _(C, {
-		...M,
+	}), d[47] = M, d[48] = L, d[49] = Q) : Q = d[49];
+	let $;
+	return d[50] !== H || d[51] !== P || d[52] !== u || d[53] !== Y || d[54] !== X || d[55] !== Z || d[56] !== Q || d[57] !== U || d[58] !== W ? ($ = /* @__PURE__ */ _(C, {
+		...P,
+		...H,
 		ref: u,
-		className: z,
-		sx: B,
-		slotProps: G,
+		className: U,
+		sx: W,
+		slotProps: Y,
 		children: [
-			K,
-			q,
-			J
+			X,
+			Z,
+			Q
 		]
-	}), d[45] = M, d[46] = u, d[47] = G, d[48] = K, d[49] = q, d[50] = J, d[51] = z, d[52] = B, d[53] = Y) : Y = d[53], Y;
+	}), d[50] = H, d[51] = P, d[52] = u, d[53] = Y, d[54] = X, d[55] = Z, d[56] = Q, d[57] = U, d[58] = W, d[59] = $) : $ = d[59], $;
 });
-function D(e) {
+function O(e) {
 	return e.children !== void 0 || e.items !== void 0;
 }
-function O(e) {
+function k(e) {
 	return /* @__PURE__ */ p(w, {
 		...e.slotProps?.item,
 		key: e.id,
@@ -163,6 +170,6 @@ function O(e) {
 	}));
 }
 //#endregion
-export { E as SvMenu };
+export { D as SvMenu };
 
 //# sourceMappingURL=sv-menu.js.map

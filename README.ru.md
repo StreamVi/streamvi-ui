@@ -16,7 +16,7 @@ npm install @streamvi/streamvi-ui-kit
 
 | Пакет                                  | Поддерживаемый диапазон |
 | -------------------------------------- | ----------------------- |
-| `react`, `react-dom`                   | `^19.2.0`               |
+| `react`, `react-dom`                   | `^19.3.0`               |
 | `@mui/material`, `@mui/icons-material` | `^9.5.0`                |
 | `@emotion/react`                       | `^11.14.0`              |
 | `@emotion/styled`                      | `^11.14.1`              |
@@ -24,8 +24,12 @@ npm install @streamvi/streamvi-ui-kit
 npm 7+ автоматически устанавливает обязательные peer-зависимости, если это поведение не отключено. Для явной установки:
 
 ```sh
-npm install react@^19.2.0 react-dom@^19.2.0 @mui/material@^9.5.0 @mui/icons-material@^9.5.0 @emotion/react@^11.14.0 @emotion/styled@^11.14.1
+npm install react@^19.3.0 react-dom@^19.3.0 @mui/material@^9.5.0 @mui/icons-material@^9.5.0 @emotion/react@^11.14.0 @emotion/styled@^11.14.1
 ```
+
+Минимальная поддерживаемая версия React и React DOM — 19.3.0. При переходе с React 19.2 обновите оба пакета вместе.
+
+Декларации TypeScript поддерживают `moduleResolution: Bundler` и `NodeNext`. В MUI 9.5 сочетание `exactOptionalPropertyTypes: true` и `skipLibCheck: false` вызывает ошибки в декларациях Collapse/Fade. Используйте `skipLibCheck: true` с точной проверкой optional-свойств либо отключите `exactOptionalPropertyTypes` при проверке всех деклараций зависимостей. Проверки npm-пакета охватывают обе конфигурации.
 
 Если приложение уже использует MUI и Emotion, сохраните его прямые зависимости и согласуйте их версии с этими диапазонами, чтобы приложение и UI Kit использовали совместимые экземпляры библиотек.
 
@@ -423,6 +427,8 @@ export function CustomizedExample() {
 
 ## Переход с предыдущей версии
 
+Требуются React и React DOM 19.3.0 или новее в пределах React 19. Перед установкой выпуска согласованно обновите React-пакеты приложения и их типы.
+
 **Обновление содержит несовместимые изменения.** Переход с Base UI на Material UI меняет API компонентов и способы настройки оформления. Перед обновлением пересмотрите существующие использования и CSS-селекторы; прежняя DOM-структура и типы Base UI не являются поддерживаемыми контрактами этой версии.
 
 | Прежнее использование                                                                    | Актуальный API / необходимое изменение                                                                                                                                                                                                  |
@@ -442,6 +448,10 @@ export function CustomizedExample() {
 | Menu `triggerButton`, автоматическое закрытие после выбора, причина закрытия `itemClick` | Создайте отдельный триггер; управляйте `anchorEl/open/onClose` и закрывайте меню из `onClick` пункта. Удалите обработку `itemClick`.                                                                                                    |
 
 Проверяйте обработчики событий вместе с названиями свойств: `SvField` получает событие, `SvNumberField` — `(event, numberOrNull)`, а `SvTagInput` использует колбэки MUI Autocomplete. Примеры выше и [Storybook](https://ui.streamvi.io) показывают актуальное использование компонентов.
+
+## Лицензия
+
+Библиотека распространяется под MIT; текст находится в `LICENSE` внутри пакета. Поставляемый шрифт Inter сохраняет SIL Open Font License 1.1; оригинальный текст включён в `dist/fonts/OFL.txt`. Авторство и уведомления о сторонних компонентах приведены в `THIRD-PARTY-NOTICES.md`.
 
 ## Полезные ссылки
 

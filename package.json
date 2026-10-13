@@ -4,10 +4,13 @@
   "version": "0.0.0",
   "type": "module",
   "description": "StreamVi UI components for React and Material UI",
+  "license": "MIT",
   "module": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "files": [
-    "dist"
+    "dist",
+    "README.ru.md",
+    "THIRD-PARTY-NOTICES.md"
   ],
   "sideEffects": [
     "**/*.css"
@@ -26,29 +29,6 @@
   "publishConfig": {
     "access": "public"
   },
-  "scripts": {
-    "prepare": "husky",
-    "storybook": "storybook dev -p 6006",
-    "build": "npm run typecheck && vite build",
-    "prepack": "npm run build",
-    "typecheck": "tsc -b",
-    "lint": "oxlint .",
-    "build-storybook": "storybook build",
-    "build:storybook": "dotenv -v VITE_SKIP_DTS=true -- storybook build",
-    "test": "vitest run",
-    "test:unit": "vitest run --project unit",
-    "test:browser": "vitest run --project storybook",
-    "test:package": "node scripts/test-package.mjs",
-    "format": "prettier --write .",
-    "format:check": "prettier --check .",
-    "test:visual": "node scripts/capture-storybook.mjs",
-    "test:visual:fields": "node scripts/capture-fields.mjs",
-    "test:visual:select": "node scripts/capture-select.mjs",
-    "test:visual:menu": "node scripts/capture-menu.mjs",
-    "test:visual:radio": "node scripts/capture-radio.mjs",
-    "test:visual:slider": "node scripts/capture-slider.mjs",
-    "test:visual:switch": "node scripts/capture-switch.mjs"
-  },
   "dependencies": {
     "@mui/utils": "^9.5.0",
     "@radix-ui/react-compose-refs": "^1.1.5",
@@ -60,54 +40,7 @@
     "@emotion/styled": "^11.14.1",
     "@mui/icons-material": "^9.5.0",
     "@mui/material": "^9.5.0",
-    "react": "^19.2.0",
-    "react-dom": "^19.2.0"
-  },
-  "devDependencies": {
-    "@babel/core": "^8.0.7",
-    "@chromatic-com/storybook": "^5.4.0",
-    "@commitlint/cli": "^21.2.3",
-    "@commitlint/config-conventional": "^21.2.3",
-    "@commitlint/format": "^21.2.3",
-    "@commitlint/types": "^21.2.3",
-    "@emotion/react": "^11.14.0",
-    "@emotion/styled": "^11.14.1",
-    "@microsoft/api-extractor": "^7.59.4",
-    "@mui/icons-material": "^9.5.0",
-    "@mui/material": "^9.5.0",
-    "@rolldown/plugin-babel": "^0.2.3",
-    "@storybook/addon-a11y": "^10.6.1",
-    "@storybook/addon-docs": "^10.6.1",
-    "@storybook/addon-mcp": "^10.6.1",
-    "@storybook/addon-vitest": "^10.6.1",
-    "@storybook/react-vite": "^10.6.1",
-    "@types/babel__core": "^7.20.5",
-    "@types/node": "^24.19.2",
-    "@types/react": "~19.2.18",
-    "@types/react-dom": "~19.2.7",
-    "@vitejs/plugin-react": "^6.1.2",
-    "@vitest/browser-playwright": "^5.0.3",
-    "@vitest/coverage-v8": "^5.0.3",
-    "babel-plugin-react-compiler": "^1.0.0",
-    "dotenv-cli": "^11.0.0",
-    "eslint-plugin-react-hooks": "^7.1.1",
-    "eslint-plugin-storybook": "^10.6.1",
-    "husky": "^9.1.7",
-    "lint-staged": "^17.6.0",
-    "oxlint": "1.87.0",
-    "oxlint-tsgolint": "7.0.2004",
-    "playwright": "^1.64.0",
-    "prettier": "^3.9.10",
-    "prettier-plugin-organize-imports": "^4.3.0",
-    "react": "~19.2.8",
-    "react-dom": "~19.2.8",
-    "storybook": "^10.6.1",
-    "typescript": "^6.0.3",
-    "unplugin-dts": "^1.1.2",
-    "vite": "^8.3.4",
-    "vitest": "^5.0.3"
-  },
-  "allowScripts": {
-    "esbuild@0.28.2": true
+    "react": "^19.3.0",
+    "react-dom": "^19.3.0"
   }
 }
