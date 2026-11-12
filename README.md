@@ -460,3 +460,4 @@ The library is distributed under the MIT license; see `LICENSE` in the package. 
 - [StreamVi plugin development guide](https://streamvi.io/ru/docs/dev)
 - [StreamVi developer community on Telegram](https://t.me/streamvi_plugins)
 - [GitHub repository](https://github.com/StreamVi/streamvi-ui)
+-
