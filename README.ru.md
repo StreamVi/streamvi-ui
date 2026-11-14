@@ -1,5 +1,11 @@
 # StreamVi UI Kit
 
+[![npm](https://img.shields.io/npm/v/@streamvi.io/streamvi-ui-kit?style=flat)](https://www.npmjs.com/package/@streamvi.io/streamvi-ui-kit)
+[![Publish](https://img.shields.io/github/actions/workflow/status/StreamVi/streamvi-ui/publish.yml?event=push&label=Publish&logo=github&style=flat)](https://github.com/StreamVi/streamvi-ui/actions/workflows/publish.yml)
+[![TypeScript types included](https://img.shields.io/badge/TypeScript-types%20included-3178c6?logo=typescript&style=flat)](https://www.npmjs.com/package/@streamvi.io/streamvi-ui-kit)
+[![License](https://img.shields.io/npm/l/@streamvi.io/streamvi-ui-kit?style=flat)](https://github.com/StreamVi/streamvi-ui/blob/main/LICENSE)
+[![Storybook docs](https://img.shields.io/badge/Storybook-docs-ff4785?logo=storybook&style=flat)](https://ui.streamvi.io)
+
 [English version](./README.md)
 
 StreamVi UI Kit — библиотека из 14 React-компонентов на Material UI для создания интерфейсов StreamVi и плагинов в едином визуальном стиле, со светлой и тёмной темами и поддержкой TypeScript.

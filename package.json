@@ -1,6 +1,6 @@
 {
   "name": "@streamvi.io/streamvi-ui-kit",
-  "version": "2.0.1",
+  "version": "2.0.2",
   "private": false,
   "description": "StreamVi UI components for React and Material UI",
   "homepage": "https://github.com/StreamVi/streamvi-ui#readme",
