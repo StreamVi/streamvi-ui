@@ -2,11 +2,11 @@ import { svTokens as e } from "../../theme/tokens.js";
 import { outlinedInputClasses as t } from "@mui/material/OutlinedInput";
 import { selectClasses as n } from "@mui/material/Select";
 import { inputBaseClasses as r } from "@mui/material/InputBase";
-//#region src/components/sv-select/sv-select.styles.ts
+// src/components/sv-select/sv-select.styles.ts
 function i(i, a) {
 	return (o) => {
-		let s = (o.vars ?? o).palette, c = s[i], l = i === "primary" ? `var(--SvSelect-accent, ${e(o).accent})` : c && typeof c == "object" && "main" in c ? c.main : e(o).accent;
-		return {
+		let s = (o.vars ?? o).palette, c = s[i], l = e(o).accent;
+		return i === "primary" ? l = `var(--SvSelect-accent, ${e(o).accent})` : c && typeof c == "object" && "main" in c && (l = c.main), {
 			minWidth: 0,
 			borderRadius: "8px",
 			fontSize: "13px",
@@ -51,7 +51,6 @@ function i(i, a) {
 		};
 	};
 }
-//#endregion
 export { i as selectStyles };
 
 //# sourceMappingURL=sv-select.styles.js.map

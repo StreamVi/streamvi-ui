@@ -8,7 +8,7 @@ import o from "clsx";
 import { mergeSx as s } from "merge-sx";
 import { forwardRef as c, useContext as l, useId as u } from "react";
 import { jsx as d } from "react/jsx-runtime";
-//#region src/components/sv-button/sv-button.tsx
+// src/components/sv-button/sv-button.tsx
 var f = c(function(c, f) {
 	let p = l(r), m = a({
 		props: {},
@@ -33,26 +33,28 @@ var f = c(function(c, f) {
 	}), v = a({
 		props: _,
 		name: "MuiButton"
-	}), { appearance: y = "default", variant: b = "contained", color: x = y === "success" ? "success" : "primary", size: S = "medium", disableElevation: C = !0, loading: w = null, loadingIndicator: T, loadingPosition: E, children: D, className: O, id: k, ...A } = v, j = u(), M = k ?? j, N = v.color !== void 0, P = T !== void 0 || E !== void 0 ? "mui" : b === "text" ? "text" : b === "contained" && (y === "default" && x === "primary" || y === "secondary" && !N) ? "stripes" : "mui", F = {
+	}), { appearance: y = "default", variant: b = "contained", color: x = y === "success" ? "success" : "primary", size: S = "medium", disableElevation: C = !0, loading: w = null, loadingIndicator: T, loadingPosition: E, children: D, className: O, id: k, ...A } = v, j = u(), M = k ?? j, N = v.color !== void 0, P = T !== void 0 || E !== void 0, F = "mui";
+	P || (b === "text" ? F = "text" : b === "contained" && (y === "default" && x === "primary" || y === "secondary" && !N) && (F = "stripes"));
+	let I = {
 		...v,
 		appearance: y,
 		variant: b,
 		color: x,
 		size: S,
 		hasColor: N,
-		loadingMode: P,
+		loadingMode: F,
 		loading: w,
 		loadingPosition: E ?? "center"
-	}, I = P === "stripes" ? /* @__PURE__ */ d(t, {
+	}, L = T;
+	return F === "stripes" ? L = /* @__PURE__ */ d(t, {
 		component: "span",
 		role: "progressbar",
 		"aria-labelledby": M
-	}) : P === "mui" ? T : /* @__PURE__ */ d(i, {
+	}) : F === "text" && (L = /* @__PURE__ */ d(i, {
 		color: "inherit",
 		size: 16,
 		"aria-labelledby": M
-	});
-	return /* @__PURE__ */ d(n, {
+	})), /* @__PURE__ */ d(n, {
 		...A,
 		id: M,
 		ref: f,
@@ -62,17 +64,16 @@ var f = c(function(c, f) {
 		size: S,
 		disableElevation: C,
 		loading: w,
-		loadingIndicator: I,
+		loadingIndicator: L,
 		loadingPosition: E,
 		"aria-busy": w ? !0 : A["aria-busy"],
-		sx: s((t) => e(t, F), m.sx, h.sx, c.sx),
+		sx: s((t) => e(t, I), m.sx, h.sx, c.sx),
 		children: /* @__PURE__ */ d("span", {
 			className: "SvButton-label",
 			children: D
 		})
 	});
 });
-//#endregion
 export { f as SvButton };
 
 //# sourceMappingURL=sv-button.js.map

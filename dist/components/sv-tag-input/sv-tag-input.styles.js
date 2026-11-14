@@ -3,7 +3,7 @@ import { buttonBaseClasses as t } from "@mui/material/ButtonBase";
 import { chipClasses as n } from "@mui/material/Chip";
 import { outlinedInputClasses as r } from "@mui/material/OutlinedInput";
 import { autocompleteClasses as i } from "@mui/material/Autocomplete";
-//#region src/components/sv-tag-input/sv-tag-input.styles.ts
+// src/components/sv-tag-input/sv-tag-input.styles.ts
 var a = {
 	minWidth: 0,
 	maxWidth: "100%",
@@ -54,7 +54,6 @@ function s(n) {
 		}
 	};
 }
-//#endregion
 export { o as tagChipStyles, s as tagClearStyles, a as tagRootStyles };
 
 //# sourceMappingURL=sv-tag-input.styles.js.map

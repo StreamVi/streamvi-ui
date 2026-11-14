@@ -13,7 +13,7 @@ import { c as y } from "react/compiler-runtime";
 import { composeRefs as b } from "@radix-ui/react-compose-refs";
 import x from "@mui/material/Autocomplete";
 import S from "@mui/material/Portal";
-//#region src/components/sv-tag-input/sv-tag-input.tsx
+// src/components/sv-tag-input/sv-tag-input.tsx
 var C = l(null), w = u(function(e, t) {
 	let n = y(23), r, i;
 	n[0] === e ? (r = n[1], i = n[2]) : ({ownerState: r, ...i} = e, n[0] = e, n[1] = r, n[2] = i);
@@ -58,7 +58,7 @@ var C = l(null), w = u(function(e, t) {
 	}), { label: S, helperText: T, error: E = !1, placeholder: D, labelAdornment: O, className: k, sx: A, slotProps: j = {}, slots: M, options: N = [], renderInput: P, renderValue: F, clearIcon: I, clearText: L = "Clear", size: R = "medium", ...z } = o({
 		props: y,
 		name: "MuiAutocomplete"
-	}), { textField: B, ...V } = j, H = p(null), U = p(null), W = d(() => H.current, []), G = c(!P && i, f.sx, v.sx, l.sx);
+	}), { textField: B, ...V } = j, H = p(null), U = p(null), W = d(() => H.current, []), G = c(!P && i, f.sx, v.sx, l.sx), K = I === void 0 ? L : I;
 	return /* @__PURE__ */ h(C.Provider, {
 		value: {
 			container: W,
@@ -76,7 +76,7 @@ var C = l(null), w = u(function(e, t) {
 			options: N,
 			size: R,
 			clearText: L,
-			clearIcon: P ? I : I === void 0 ? L : I,
+			clearIcon: P ? I : K,
 			className: s("SvTagInput-root", k),
 			sx: G,
 			slots: {
@@ -122,10 +122,10 @@ var C = l(null), w = u(function(e, t) {
 						...n?.slotProps,
 						inputLabel: _(n?.slotProps?.inputLabel, e.slotProps.inputLabel),
 						input: (t) => {
-							let r = n?.slotProps?.input, i = typeof r == "function" ? r(t) : r;
+							let r = n?.slotProps?.input, i = typeof r == "function" ? r(t) : r, a = i && "ref" in i ? i.ref : void 0;
 							return {
 								..._(i, e.slotProps.input),
-								ref: b(i?.ref, e.slotProps.input.ref)
+								ref: b(a, e.slotProps.input.ref)
 							};
 						},
 						htmlInput: (t) => {
@@ -141,7 +141,6 @@ var C = l(null), w = u(function(e, t) {
 		})
 	});
 });
-//#endregion
 export { T as SvTagInput };
 
 //# sourceMappingURL=sv-tag-input.js.map

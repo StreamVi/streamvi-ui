@@ -1,5 +1,5 @@
 import e from "@mui/utils/deepmerge";
-//#region src/theme/defaults.ts
+// src/theme/defaults.ts
 function t(e) {
 	let t = e === "dark";
 	return {
@@ -50,7 +50,6 @@ function n(n, r) {
 	}
 	return i.colorSchemes = a, r.palette || delete i.palette, i;
 }
-//#endregion
 export { n as mergeSvThemeOptions, t as svColorDefaults };
 
 //# sourceMappingURL=defaults.js.map

@@ -6,7 +6,7 @@ import { forwardRef as i } from "react";
 import { jsx as a } from "react/jsx-runtime";
 import { mergeSlotProps as o } from "@mui/material/utils";
 import s, { sliderClasses as c } from "@mui/material/Slider";
-//#region src/components/sv-slider/sv-slider.tsx
+// src/components/sv-slider/sv-slider.tsx
 function l(t) {
 	return {
 		width: "var(--SvSlider-thumb-size)",
@@ -87,7 +87,6 @@ var u = {
 		}
 	});
 });
-//#endregion
 export { f as SvSlider };
 
 //# sourceMappingURL=sv-slider.js.map

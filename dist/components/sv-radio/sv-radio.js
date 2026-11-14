@@ -9,7 +9,7 @@ import s from "@mui/icons-material/CheckRounded";
 import { buttonBaseClasses as c } from "@mui/material/ButtonBase";
 import { mergeSlotProps as l } from "@mui/material/utils";
 import u, { radioClasses as d } from "@mui/material/Radio";
-//#region src/components/sv-radio/sv-radio.tsx
+// src/components/sv-radio/sv-radio.tsx
 var f = {
 	width: "var(--SvRadio-size)",
 	height: "var(--SvRadio-size)",
@@ -104,7 +104,6 @@ var f = {
 		}
 	});
 });
-//#endregion
 export { p as SvRadio };
 
 //# sourceMappingURL=sv-radio.js.map

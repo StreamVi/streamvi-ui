@@ -10,7 +10,7 @@ import { useFormControl as p } from "@mui/material/FormControl";
 import m from "@mui/material/FormControlLabel";
 import h from "@mui/material/RadioGroup";
 import { composeRefs as g } from "@radix-ui/react-compose-refs";
-//#region src/components/sv-radio-group/sv-radio-group.tsx
+// src/components/sv-radio-group/sv-radio-group.tsx
 function _(e = {}, t = {}) {
 	return {
 		...f(t, e),
@@ -28,10 +28,10 @@ function _(e = {}, t = {}) {
 				};
 			},
 			root: (n) => {
-				let r = typeof e.slotProps?.root == "function" ? e.slotProps.root(n) : e.slotProps?.root, i = typeof t.slotProps?.root == "function" ? t.slotProps.root(n) : t.slotProps?.root;
+				let r = typeof e.slotProps?.root == "function" ? e.slotProps.root(n) : e.slotProps?.root, i = typeof t.slotProps?.root == "function" ? t.slotProps.root(n) : t.slotProps?.root, a = r && "ref" in r ? r.ref : void 0, o = i && "ref" in i ? i.ref : void 0;
 				return {
 					...f(i, r ?? {}),
-					...r?.ref || i?.ref ? { ref: g(r?.ref, i?.ref) } : {}
+					...a || o ? { ref: g(a, o) } : {}
 				};
 			}
 		}
@@ -114,7 +114,6 @@ var v = c(function(c, g) {
 		]
 	});
 });
-//#endregion
 export { v as SvRadioGroup };
 
 //# sourceMappingURL=sv-radio-group.js.map

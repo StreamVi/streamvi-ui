@@ -1,6 +1,6 @@
 import { svTokens as e } from "../../theme/tokens.js";
 import { circularProgressClasses as t } from "@mui/material/CircularProgress";
-//#region src/components/shared/button-shared.ts
+// src/components/shared/button-shared.ts
 function n(e) {
 	return e === "small" ? 28 : e === "large" ? 44 : 36;
 }
@@ -24,7 +24,6 @@ var a = {
 	"&::before": { animation: "none" },
 	[`& .${t.root}, & .${t.circle}`]: { animation: "none" }
 };
-//#endregion
 export { r as buttonColors, i as buttonFocus, a as buttonReducedMotion, n as buttonSize };
 
 //# sourceMappingURL=button-shared.js.map

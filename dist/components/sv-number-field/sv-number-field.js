@@ -10,7 +10,7 @@ import f from "@mui/icons-material/RemoveRounded";
 import { useForkRef as p } from "@mui/material/utils";
 import m from "@mui/material/InputAdornment";
 import te from "@mui/icons-material/AddRounded";
-//#region src/components/sv-number-field/sv-number-field.tsx
+// src/components/sv-number-field/sv-number-field.tsx
 var h = l(function(l, h) {
 	let ne = o({
 		props: {},
@@ -76,7 +76,7 @@ var h = l(function(l, h) {
 		x
 	]);
 	let ce = (e) => {
-		(L?.onKeyDown ?? ae)?.(e), !(e.defaultPrevented || H || e.nativeEvent.isComposing || e.target !== Z) && (e.key === "Enter" ? (Y(e), e.preventDefault()) : e.key === "ArrowUp" || e.key === "ArrowDown" ? (X(e, e.key === "ArrowUp" ? 1 : -1), e.preventDefault()) : e.key === "Escape" && P(null));
+		(L?.onKeyDown ?? ae)?.(e), e.defaultPrevented || H || e.nativeEvent.isComposing || e.target !== Z || (e.key === "Enter" ? (Y(e), e.preventDefault()) : e.key === "ArrowUp" || e.key === "ArrowDown" ? (X(e, e.key === "ArrowUp" ? 1 : -1), e.preventDefault()) : e.key === "Escape" && P(null));
 	}, $ = (e) => {
 		let t = e === 1 ? W : G, r = (e === 1 ? D.increment : D.decrement) ?? n;
 		return /* @__PURE__ */ d(r, {
@@ -165,7 +165,6 @@ var h = l(function(l, h) {
 		}
 	});
 });
-//#endregion
 export { h as SvNumberField };
 
 //# sourceMappingURL=sv-number-field.js.map

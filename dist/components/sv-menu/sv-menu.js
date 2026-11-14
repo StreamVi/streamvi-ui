@@ -13,7 +13,7 @@ import S from "@mui/material/ListSubheader";
 import C from "@mui/material/Menu";
 import w from "@mui/material/MenuItem";
 import { useTheme as T } from "@mui/material/styles";
-//#region src/components/sv-menu/sv-menu.tsx
+// src/components/sv-menu/sv-menu.tsx
 function E(e, t) {
 	return u.map(e, (e) => h(e) ? e.type === d ? f(e, { children: E(e.props.children, t) }) : e.type === w ? f(e, {
 		className: c("SvMenu-item", t.className, e.props.className),
@@ -169,7 +169,6 @@ function k(e) {
 		}
 	}));
 }
-//#endregion
 export { D as SvMenu };
 
 //# sourceMappingURL=sv-menu.js.map

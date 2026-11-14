@@ -5,7 +5,7 @@ import { jsx as r } from "react/jsx-runtime";
 import { mergeSlotProps as i } from "@mui/material/utils";
 import { c as a } from "react/compiler-runtime";
 import o from "@mui/material/Tooltip";
-//#region src/components/sv-tooltip/sv-tooltip.tsx
+// src/components/sv-tooltip/sv-tooltip.tsx
 var s = n(function(n, s) {
 	let c = a(19), l, u, d, f;
 	c[0] === n ? (l = c[1], u = c[2], d = c[3], f = c[4]) : ({className: l, sx: f, slotProps: d, ...u} = n, c[0] = n, c[1] = l, c[2] = u, c[3] = d, c[4] = f);
@@ -48,7 +48,6 @@ var s = n(function(n, s) {
 		slotProps: _
 	}), c[15] = u, c[16] = s, c[17] = _, c[18] = v) : v = c[18], v;
 });
-//#endregion
 export { s as SvTooltip };
 
 //# sourceMappingURL=sv-tooltip.js.map

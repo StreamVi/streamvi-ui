@@ -11,7 +11,7 @@ import { c as p } from "react/compiler-runtime";
 import m from "@mui/material/MenuItem";
 import h from "@mui/icons-material/KeyboardArrowDown";
 import g from "@mui/material/Select";
-//#region src/components/sv-select/sv-select.tsx
+// src/components/sv-select/sv-select.tsx
 function _(n) {
 	let l = p(21), _;
 	l[0] === Symbol.for("react.memo_cache_sentinel") ? (_ = {
@@ -84,7 +84,6 @@ function y(e) {
 	return e.children !== void 0 || e.options !== void 0;
 }
 _.muiName = g.muiName;
-//#endregion
 export { _ as SvSelect };
 
 //# sourceMappingURL=sv-select.js.map

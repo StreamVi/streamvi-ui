@@ -3,7 +3,7 @@ import { formHelperTextClasses as t } from "@mui/material/FormHelperText";
 import { inputLabelClasses as n } from "@mui/material/InputLabel";
 import { outlinedInputClasses as r } from "@mui/material/OutlinedInput";
 import { inputAdornmentClasses as i } from "@mui/material/InputAdornment";
-//#region src/components/sv-field/sv-field.styles.ts
+// src/components/sv-field/sv-field.styles.ts
 var a = {
 	gap: "4px",
 	minWidth: 0,
@@ -93,7 +93,6 @@ function c(t) {
 		}
 	};
 }
-//#endregion
 export { s as fieldHelperStyles, c as fieldInputStyles, o as fieldLabelStyles, a as fieldRootStyles };
 
 //# sourceMappingURL=sv-field.styles.js.map

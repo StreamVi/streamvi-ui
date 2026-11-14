@@ -1,4 +1,4 @@
-//#region src/components/sv-select/menu-paper.tsx
+// src/components/sv-select/menu-paper.tsx
 var e = {
 	borderRadius: "8px",
 	border: "1px solid",
@@ -12,7 +12,6 @@ var e = {
 	lineHeight: "20px",
 	padding: "8px 16px"
 };
-//#endregion
 export { t as menuItemSx, e as menuPaperSx };
 
 //# sourceMappingURL=menu-paper.js.map

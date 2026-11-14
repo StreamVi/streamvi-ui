@@ -1,8 +1,8 @@
-import { svTokens as e } from "./tokens.js";
-import { mergeSvThemeOptions as t, svColorDefaults as n } from "./defaults.js";
+import { mergeSvThemeOptions as e, svColorDefaults as t } from "./defaults.js";
+import { svTokens as n } from "./tokens.js";
 import { mergeSx as r } from "merge-sx";
 import { createTheme as i } from "@mui/material/styles";
-//#region src/theme/create-theme.ts
+// src/theme/create-theme.ts
 function a(e, t, n) {
 	let r = Object.fromEntries(Object.entries(n).filter(([e, n]) => n !== t[e]));
 	return {
@@ -10,99 +10,102 @@ function a(e, t, n) {
 		...e.applyStyles("dark", r)
 	};
 }
-function o(o = {}) {
-	let s = o.defaultColorScheme ?? o.palette?.mode ?? "light", c = (e) => {
-		if (!o.cssVariables && !o.colorSchemes || e === s && o.palette) return o.palette;
-		let t = o.colorSchemes?.[e];
+function o(e) {
+	return {
+		"--SvSwitch-neutral": "#8e8e8e",
+		...e.applyStyles("dark", { "--SvSwitch-neutral": "#828282" })
+	};
+}
+function s(s = {}) {
+	let c = s.defaultColorScheme ?? s.palette?.mode ?? "light", l = (e) => {
+		if (!s.cssVariables && !s.colorSchemes || e === c && s.palette) return s.palette;
+		let t = s.colorSchemes?.[e];
 		return t && t !== !0 ? t.palette : void 0;
-	}, l = (e, t) => c(t)?.text?.secondary ? (e.vars ?? e).palette.text.secondary : t === "dark" ? "#828282" : "#8e8e8e", u = (e, t) => c(t)?.error ? (e.vars ?? e).palette.error.main : "#d64933", d = (t) => {
-		let n = e(t), r = (t.vars ?? t).palette, i = (e) => ({
-			"--SvButton-error": u(t, e),
-			"--SvButton-errorHover": c(e)?.error ? r.error.dark : "#de6d5c",
-			"--SvButton-success": c(e)?.success ? r.success.main : n.green,
-			"--SvButton-successHover": c(e)?.success ? r.success.dark : n.greenHover ?? "#1fbf4c",
-			"--SvButton-successContrast": c(e)?.success ? r.success.contrastText : "#fff"
+	}, u = (e, t) => l(t)?.text?.secondary ? (e.vars ?? e).palette.text.secondary : t === "dark" ? "#828282" : "#8e8e8e", d = (e, t) => l(t)?.error ? (e.vars ?? e).palette.error.main : "#d64933", f = (e) => {
+		let t = n(e), r = (e.vars ?? e).palette, i = (n) => ({
+			"--SvButton-error": d(e, n),
+			"--SvButton-errorHover": l(n)?.error ? r.error.dark : "#de6d5c",
+			"--SvButton-success": l(n)?.success ? r.success.main : t.green,
+			"--SvButton-successHover": l(n)?.success ? r.success.dark : t.greenHover ?? "#1fbf4c",
+			"--SvButton-successContrast": l(n)?.success ? r.success.contrastText : "#fff"
 		});
-		return a(t, {
-			"--SvButton-primary": n.accent,
-			"--SvButton-primaryHover": n.accentHover,
+		return a(e, {
+			"--SvButton-primary": t.accent,
+			"--SvButton-primaryHover": t.accentHover,
 			"--SvButton-primaryContrast": "#fff",
 			"--SvButton-errorContrast": "#fff",
 			...i("light"),
-			"--SvButton-surface": o.sv?.surface ?? "rgba(20,20,20,0.06)",
-			"--SvButton-surfaceHover": o.sv?.surfaceHover ?? "rgba(20,20,20,0.1)",
+			"--SvButton-surface": s.sv?.surface ?? "rgba(20,20,20,0.06)",
+			"--SvButton-surfaceHover": s.sv?.surfaceHover ?? "rgba(20,20,20,0.1)",
 			"--SvButton-muted": "#8e8e8e"
 		}, {
 			...i("dark"),
-			"--SvButton-surface": o.sv?.surface ?? "rgba(247,247,247,0.06)",
-			"--SvButton-surfaceHover": o.sv?.surfaceHover ?? "rgba(247,247,247,0.1)",
+			"--SvButton-surface": s.sv?.surface ?? "rgba(247,247,247,0.06)",
+			"--SvButton-surfaceHover": s.sv?.surfaceHover ?? "rgba(247,247,247,0.1)",
 			"--SvButton-muted": "#828282"
 		});
-	}, f = (t) => ({
-		"--SvCheckbox-accent": e(t).accent,
-		"--SvCheckbox-stroke": o.sv?.stroke ?? "#ccc",
+	}, p = (e) => ({
+		"--SvCheckbox-accent": n(e).accent,
+		"--SvCheckbox-stroke": s.sv?.stroke ?? "#ccc",
 		"--SvCheckbox-foreground": "#fff",
-		...t.applyStyles("dark", { "--SvCheckbox-stroke": o.sv?.stroke ?? "#333" })
-	}), p = (e) => ({
-		"--SvSwitch-neutral": "#8e8e8e",
-		...e.applyStyles("dark", { "--SvSwitch-neutral": "#828282" })
+		...e.applyStyles("dark", { "--SvCheckbox-stroke": s.sv?.stroke ?? "#333" })
 	}), m = (e) => ({
-		"--SvSlider-default-stroke": o.sv?.stroke ?? "#ccc",
-		...e.applyStyles("dark", { "--SvSlider-default-stroke": o.sv?.stroke ?? "#333" })
-	}), h = (t) => ({
-		"--SvRadio-accent": e(t).accent,
-		"--SvRadio-stroke": o.sv?.stroke ?? "#ccc",
+		"--SvSlider-default-stroke": s.sv?.stroke ?? "#ccc",
+		...e.applyStyles("dark", { "--SvSlider-default-stroke": s.sv?.stroke ?? "#333" })
+	}), h = (e) => ({
+		"--SvRadio-accent": n(e).accent,
+		"--SvRadio-stroke": s.sv?.stroke ?? "#ccc",
 		"--SvRadio-foreground": "#fff",
-		...t.applyStyles("dark", { "--SvRadio-stroke": o.sv?.stroke ?? "#333" })
-	}), g = (t) => a(t, {
-		"--SvField-accent": e(t).accent,
-		"--SvField-stroke": o.sv?.stroke ?? "#ccc",
-		"--SvField-secondary": l(t, "light"),
-		"--SvField-error": u(t, "light")
+		...e.applyStyles("dark", { "--SvRadio-stroke": s.sv?.stroke ?? "#333" })
+	}), g = (e) => a(e, {
+		"--SvField-accent": n(e).accent,
+		"--SvField-stroke": s.sv?.stroke ?? "#ccc",
+		"--SvField-secondary": u(e, "light"),
+		"--SvField-error": d(e, "light")
 	}, {
-		"--SvField-error": u(t, "dark"),
-		"--SvField-stroke": o.sv?.stroke ?? "#333",
-		"--SvField-secondary": l(t, "dark")
+		"--SvField-error": d(e, "dark"),
+		"--SvField-stroke": s.sv?.stroke ?? "#333",
+		"--SvField-secondary": u(e, "dark")
 	}), _ = (e) => ({
-		"--SvChip-surface": o.sv?.surface ?? "rgba(20,20,20,0.06)",
-		"--SvChip-surface-hover": o.sv?.surfaceHover ?? "rgba(20,20,20,0.1)",
-		"--SvChip-icon-color": l(e, "light"),
+		"--SvChip-surface": s.sv?.surface ?? "rgba(20,20,20,0.06)",
+		"--SvChip-surface-hover": s.sv?.surfaceHover ?? "rgba(20,20,20,0.1)",
+		"--SvChip-icon-color": u(e, "light"),
 		...e.applyStyles("dark", {
-			"--SvChip-surface": o.sv?.surface ?? "rgba(247,247,247,0.06)",
-			"--SvChip-surface-hover": o.sv?.surfaceHover ?? "rgba(247,247,247,0.1)",
-			"--SvChip-icon-color": l(e, "dark")
+			"--SvChip-surface": s.sv?.surface ?? "rgba(247,247,247,0.06)",
+			"--SvChip-surface-hover": s.sv?.surfaceHover ?? "rgba(247,247,247,0.1)",
+			"--SvChip-icon-color": u(e, "dark")
 		})
 	}), v = (e) => a(e, {
-		"--SvTagInput-surface": o.sv?.surface ?? "rgba(20,20,20,0.06)",
-		"--SvTagInput-secondary": l(e, "light"),
-		"--SvTagInput-error": u(e, "light")
+		"--SvTagInput-surface": s.sv?.surface ?? "rgba(20,20,20,0.06)",
+		"--SvTagInput-secondary": u(e, "light"),
+		"--SvTagInput-error": d(e, "light")
 	}, {
-		"--SvTagInput-surface": o.sv?.surface ?? "rgba(247,247,247,0.06)",
-		"--SvTagInput-secondary": l(e, "dark"),
-		"--SvTagInput-error": u(e, "dark")
-	}), y = (t) => ({
-		"--SvSelect-accent": e(t).accent,
-		"--SvSelect-stroke": o.sv?.stroke ?? "#ccc",
-		"--SvSelect-secondary": l(t, "light"),
-		"--SvSelect-error": (t.vars ?? t).palette.error.main,
-		...t.applyStyles("dark", {
-			"--SvSelect-stroke": o.sv?.stroke ?? "#333",
-			"--SvSelect-secondary": l(t, "dark")
+		"--SvTagInput-surface": s.sv?.surface ?? "rgba(247,247,247,0.06)",
+		"--SvTagInput-secondary": u(e, "dark"),
+		"--SvTagInput-error": d(e, "dark")
+	}), y = (e) => ({
+		"--SvSelect-accent": n(e).accent,
+		"--SvSelect-stroke": s.sv?.stroke ?? "#ccc",
+		"--SvSelect-secondary": u(e, "light"),
+		"--SvSelect-error": (e.vars ?? e).palette.error.main,
+		...e.applyStyles("dark", {
+			"--SvSelect-stroke": s.sv?.stroke ?? "#333",
+			"--SvSelect-secondary": u(e, "dark")
 		})
 	}), b = (e) => {
 		let t = (e.vars ?? e).palette;
 		return {
-			"--SvMenu-stroke": o.sv?.stroke ?? t.divider,
+			"--SvMenu-stroke": s.sv?.stroke ?? t.divider,
 			...e.applyStyles("dark", {
-				"--SvMenu-surface": c("dark")?.background?.paper ? t.background.paper : "rgba(34,34,34,0.48)",
-				"--SvMenu-hover": c("dark")?.action?.hover ? t.action.hover : "rgba(43,43,43,0.64)",
-				"--SvMenu-stroke": o.sv?.stroke ?? (c("dark")?.divider ? t.divider : "#333"),
-				"--SvMenu-secondary": l(e, "dark"),
-				"--SvMenu-danger": u(e, "dark")
+				"--SvMenu-surface": l("dark")?.background?.paper ? t.background.paper : "rgba(34,34,34,0.48)",
+				"--SvMenu-hover": l("dark")?.action?.hover ? t.action.hover : "rgba(43,43,43,0.64)",
+				"--SvMenu-stroke": s.sv?.stroke ?? (l("dark")?.divider ? t.divider : "#333"),
+				"--SvMenu-secondary": u(e, "dark"),
+				"--SvMenu-danger": d(e, "dark")
 			})
 		};
 	}, x = {
-		...n(s),
+		...t(c),
 		typography: {
 			fontFamily: "Inter, sans-serif",
 			button: {
@@ -117,66 +120,65 @@ function o(o = {}) {
 			SvTagInput: { defaultProps: { sx: v } },
 			SvSelect: { defaultProps: { sx: y } },
 			SvField: { defaultProps: { sx: g } },
-			SvIconButton: { defaultProps: { sx: d } },
-			SvCheckbox: { defaultProps: { sx: f } },
+			SvIconButton: { defaultProps: { sx: f } },
+			SvCheckbox: { defaultProps: { sx: p } },
 			SvRadio: { defaultProps: { sx: h } },
 			SvSlider: { defaultProps: { sx: m } },
-			SvSwitch: { defaultProps: { sx: p } },
-			SvButton: { defaultProps: { sx: d } }
+			SvSwitch: { defaultProps: { sx: o } },
+			SvButton: { defaultProps: { sx: f } }
 		}
 	};
-	return i(t(x, {
-		...o,
+	return i(e(x, {
+		...s,
 		components: {
-			...o.components,
+			...s.components,
 			SvChip: { defaultProps: {
-				...o.components?.SvChip?.defaultProps,
-				sx: r(_, o.components?.SvChip?.defaultProps?.sx)
+				...s.components?.SvChip?.defaultProps,
+				sx: r(_, s.components?.SvChip?.defaultProps?.sx)
 			} },
 			SvMenu: { defaultProps: {
-				...o.components?.SvMenu?.defaultProps,
-				sx: r(b, o.components?.SvMenu?.defaultProps?.sx)
+				...s.components?.SvMenu?.defaultProps,
+				sx: r(b, s.components?.SvMenu?.defaultProps?.sx)
 			} },
 			SvTagInput: { defaultProps: {
-				...o.components?.SvTagInput?.defaultProps,
-				sx: r(v, o.components?.SvTagInput?.defaultProps?.sx)
+				...s.components?.SvTagInput?.defaultProps,
+				sx: r(v, s.components?.SvTagInput?.defaultProps?.sx)
 			} },
 			SvSelect: { defaultProps: {
-				...o.components?.SvSelect?.defaultProps,
-				sx: r(y, o.components?.SvSelect?.defaultProps?.sx)
+				...s.components?.SvSelect?.defaultProps,
+				sx: r(y, s.components?.SvSelect?.defaultProps?.sx)
 			} },
 			SvField: { defaultProps: {
-				...o.components?.SvField?.defaultProps,
-				sx: r(g, o.components?.SvField?.defaultProps?.sx)
+				...s.components?.SvField?.defaultProps,
+				sx: r(g, s.components?.SvField?.defaultProps?.sx)
 			} },
 			SvIconButton: { defaultProps: {
-				...o.components?.SvIconButton?.defaultProps,
-				sx: r(d, o.components?.SvIconButton?.defaultProps?.sx)
+				...s.components?.SvIconButton?.defaultProps,
+				sx: r(f, s.components?.SvIconButton?.defaultProps?.sx)
 			} },
 			SvButton: { defaultProps: {
-				...o.components?.SvButton?.defaultProps,
-				sx: r(x.components?.SvButton?.defaultProps?.sx, o.components?.SvButton?.defaultProps?.sx)
+				...s.components?.SvButton?.defaultProps,
+				sx: r(x.components?.SvButton?.defaultProps?.sx, s.components?.SvButton?.defaultProps?.sx)
 			} },
 			SvSwitch: { defaultProps: {
-				...o.components?.SvSwitch?.defaultProps,
-				sx: r(p, o.components?.SvSwitch?.defaultProps?.sx)
+				...s.components?.SvSwitch?.defaultProps,
+				sx: r(o, s.components?.SvSwitch?.defaultProps?.sx)
 			} },
 			SvSlider: { defaultProps: {
-				...o.components?.SvSlider?.defaultProps,
-				sx: r(m, o.components?.SvSlider?.defaultProps?.sx)
+				...s.components?.SvSlider?.defaultProps,
+				sx: r(m, s.components?.SvSlider?.defaultProps?.sx)
 			} },
 			SvRadio: { defaultProps: {
-				...o.components?.SvRadio?.defaultProps,
-				sx: r(h, o.components?.SvRadio?.defaultProps?.sx)
+				...s.components?.SvRadio?.defaultProps,
+				sx: r(h, s.components?.SvRadio?.defaultProps?.sx)
 			} },
 			SvCheckbox: { defaultProps: {
-				...o.components?.SvCheckbox?.defaultProps,
-				sx: r(f, o.components?.SvCheckbox?.defaultProps?.sx)
+				...s.components?.SvCheckbox?.defaultProps,
+				sx: r(p, s.components?.SvCheckbox?.defaultProps?.sx)
 			} }
 		}
 	}));
 }
-//#endregion
-export { o as createSvTheme };
+export { s as createSvTheme };
 
 //# sourceMappingURL=create-theme.js.map

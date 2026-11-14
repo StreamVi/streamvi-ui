@@ -8,8 +8,10 @@ StreamVi UI Kit — библиотека из 14 React-компонентов н
 
 ## Установка
 
+Публичный пакет принадлежит npm-организации **streamvi.io**.
+
 ```sh
-npm install @streamvi/streamvi-ui-kit
+npm install @streamvi.io/streamvi-ui-kit
 ```
 
 В приложении должны быть доступны совместимые peer-зависимости:
@@ -33,26 +35,25 @@ npm install react@^19.3.0 react-dom@^19.3.0 @mui/material@^9.5.0 @mui/icons-mate
 
 Если приложение уже использует MUI и Emotion, сохраните его прямые зависимости и согласуйте их версии с этими диапазонами, чтобы приложение и UI Kit использовали совместимые экземпляры библиотек.
 
-Если пакет недоступен в npm, установите версию из GitHub, содержащую собранный пакет:
+Фиксированная версия: `npm install @streamvi.io/streamvi-ui-kit@2.0.0`. Готовая сборка из GitHub: `npm install github:StreamVi/streamvi-ui#v2.0.0 --allow-git=all`. В npm 12 Git-зависимости требуют явного разрешения; для установки из registry этот флаг не нужен. Проверка обновлений: `npm outdated @streamvi.io/streamvi-ui-kit`. [Теги версий](https://github.com/StreamVi/streamvi-ui/tags).
 
-```sh
-npm install github:StreamVi/streamvi-ui
-```
+**Переход на версию 2:** замените зависимость и все импорты `@streamvi/streamvi-ui-kit` на `@streamvi.io/streamvi-ui-kit`, включая `/fonts.css`. Удалите старую привязку registry для `@streamvi`, если она больше не нужна. Переименование не меняет API React-компонентов. Для приватного GitLab Registry настройте новый scope `@streamvi.io`.
 
 ## Быстрый старт
 
 Оберните интерфейс в `SvThemeProvider`. При необходимости один раз импортируйте `fonts.css` в точке входа приложения для подключения поставляемого с библиотекой шрифта Inter.
 
 ```tsx
-import { SvButton, SvThemeProvider } from '@streamvi/streamvi-ui-kit';
-import '@streamvi/streamvi-ui-kit/fonts.css'; // Необязательно: локальный Inter
+import { SvButton, SvThemeProvider } from '@streamvi.io/streamvi-ui-kit';
+
+import '@streamvi.io/streamvi-ui-kit/fonts.css'; // Необязательно: локальный Inter
 
 export function App() {
-  return (
-    <SvThemeProvider defaultMode="light">
-      <SvButton>Создать трансляцию</SvButton>
-    </SvThemeProvider>
-  );
+    return (
+        <SvThemeProvider defaultMode="light">
+            <SvButton>Создать трансляцию</SvButton>
+        </SvThemeProvider>
+    );
 }
 ```
 
@@ -62,7 +63,7 @@ export function App() {
 
 ## Компоненты
 
-Импортируйте компоненты и их публичные типы из `@streamvi/streamvi-ui-kit`.
+Импортируйте компоненты и их публичные типы из `@streamvi.io/streamvi-ui-kit`.
 
 | Компонент       | Основные свойства                                                                                        |
 | --------------- | -------------------------------------------------------------------------------------------------------- |
@@ -94,34 +95,25 @@ export function App() {
 Текст кнопки передаётся через `children`, иконки рядом с текстом — через `startIcon/endIcon`, содержимое чипа — через `label`, подсказки — через `title`. Выбор чипа управляется состоянием приложения.
 
 ```tsx
-import { useState } from 'react';
 import AddRounded from '@mui/icons-material/AddRounded';
 import HelpOutlineRounded from '@mui/icons-material/HelpOutlineRounded';
-import {
-  SvButton,
-  SvChip,
-  SvIconButton,
-  SvTooltip,
-} from '@streamvi/streamvi-ui-kit';
+import { SvButton, SvChip, SvIconButton, SvTooltip } from '@streamvi.io/streamvi-ui-kit';
+import { useState } from 'react';
 
 export function ActionsExample() {
-  const [selected, setSelected] = useState(false);
+    const [selected, setSelected] = useState(false);
 
-  return (
-    <>
-      <SvButton startIcon={<AddRounded />}>Создать трансляцию</SvButton>
-      <SvTooltip title="Настройте каналы перед началом трансляции">
-        <SvIconButton aria-label="Подсказка о трансляции">
-          <HelpOutlineRounded />
-        </SvIconButton>
-      </SvTooltip>
-      <SvChip
-        label="Избранное"
-        selected={selected}
-        onClick={() => setSelected((current) => !current)}
-      />
-    </>
-  );
+    return (
+        <>
+            <SvButton startIcon={<AddRounded />}>Создать трансляцию</SvButton>
+            <SvTooltip title="Настройте каналы перед началом трансляции">
+                <SvIconButton aria-label="Подсказка о трансляции">
+                    <HelpOutlineRounded />
+                </SvIconButton>
+            </SvTooltip>
+            <SvChip label="Избранное" selected={selected} onClick={() => setSelected((current) => !current)} />
+        </>
+    );
 }
 ```
 
@@ -130,25 +122,15 @@ export function ActionsExample() {
 Подписи, пояснения и кнопки изменения числа оформлены внутри компонентов. `SvField.onChange` получает событие; текст доступен через `target.value`. `SvNumberField.onChange(event, value)` получает `number | null` при фиксации значения: потере фокуса, Enter, стрелках вверх/вниз или нажатии кнопок изменения. Пустой ввод даёт `null`; неправильный ввод откатывается, число ограничивается `min/max`.
 
 ```tsx
-import { SvField, SvNumberField } from '@streamvi/streamvi-ui-kit';
+import { SvField, SvNumberField } from '@streamvi.io/streamvi-ui-kit';
 
 export function FieldsExample() {
-  return (
-    <>
-      <SvField
-        label="Название трансляции"
-        defaultValue="Вечерний эфир"
-        helperText="Название увидят зрители"
-      />
-      <SvNumberField
-        label="Количество повторов"
-        defaultValue={2}
-        min={0}
-        max={10}
-        step={1}
-      />
-    </>
-  );
+    return (
+        <>
+            <SvField label="Название трансляции" defaultValue="Вечерний эфир" helperText="Название увидят зрители" />
+            <SvNumberField label="Количество повторов" defaultValue={2} min={0} max={10} step={1} />
+        </>
+    );
 }
 ```
 
@@ -158,53 +140,37 @@ export function FieldsExample() {
 
 ```tsx
 import FormControlLabel from '@mui/material/FormControlLabel';
-import {
-  SvCheckbox,
-  SvRadio,
-  SvRadioGroup,
-  SvSlider,
-  SvSwitch,
-} from '@streamvi/streamvi-ui-kit';
+import { SvCheckbox, SvRadio, SvRadioGroup, SvSlider, SvSwitch } from '@streamvi.io/streamvi-ui-kit';
 
 export function SettingsExample() {
-  return (
-    <>
-      <FormControlLabel
-        label="Уведомлять подписчиков"
-        control={<SvCheckbox defaultChecked />}
-      />
-      <FormControlLabel
-        label="Записывать эфир"
-        control={<SvSwitch defaultChecked />}
-      />
-      <SvRadioGroup
-        name="quality"
-        label="Качество"
-        defaultValue="hd"
-        options={[
-          { value: 'hd', label: 'HD' },
-          { value: 'sd', label: 'SD' },
-        ]}
-      />
-      <SvRadioGroup
-        name="format"
-        aria-label="Формат трансляции"
-        defaultValue="video"
-      >
-        <FormControlLabel value="video" label="Видео" control={<SvRadio />} />
-        <FormControlLabel value="audio" label="Аудио" control={<SvRadio />} />
-      </SvRadioGroup>
-      <SvSlider
-        aria-label="Громкость"
-        defaultValue={50}
-        valueLabelDisplay="auto"
-        marks={[
-          { value: 0, label: '0%' },
-          { value: 100, label: '100%' },
-        ]}
-      />
-    </>
-  );
+    return (
+        <>
+            <FormControlLabel label="Уведомлять подписчиков" control={<SvCheckbox defaultChecked />} />
+            <FormControlLabel label="Записывать эфир" control={<SvSwitch defaultChecked />} />
+            <SvRadioGroup
+                name="quality"
+                label="Качество"
+                defaultValue="hd"
+                options={[
+                    { value: 'hd', label: 'HD' },
+                    { value: 'sd', label: 'SD' },
+                ]}
+            />
+            <SvRadioGroup name="format" aria-label="Формат трансляции" defaultValue="video">
+                <FormControlLabel value="video" label="Видео" control={<SvRadio />} />
+                <FormControlLabel value="audio" label="Аудио" control={<SvRadio />} />
+            </SvRadioGroup>
+            <SvSlider
+                aria-label="Громкость"
+                defaultValue={50}
+                valueLabelDisplay="auto"
+                marks={[
+                    { value: 0, label: '0%' },
+                    { value: 100, label: '100%' },
+                ]}
+            />
+        </>
+    );
 }
 ```
 
@@ -213,67 +179,62 @@ export function SettingsExample() {
 `SvMenu.items`, `SvSelect.options` и `SvTagInput.options` принимают данные. Описания меню, аватары вариантов и теги оформляются автоматически. При необходимости закрывайте меню из обработчика пункта: нажатие пункта само по себе не меняет `open` и не вызывает `onClose`. Список выбора и теги ниже используют неуправляемое состояние.
 
 ```tsx
-import { useId, useState } from 'react';
 import CloseRounded from '@mui/icons-material/CloseRounded';
-import {
-  SvButton,
-  SvMenu,
-  SvSelect,
-  SvTagInput,
-} from '@streamvi/streamvi-ui-kit';
+import { SvButton, SvMenu, SvSelect, SvTagInput } from '@streamvi.io/streamvi-ui-kit';
+import { useId, useState } from 'react';
 
 export function ListsExample() {
-  const [anchorEl, setAnchorEl] = useState<HTMLElement | null>(null);
-  const triggerId = useId();
-  const menuId = useId();
-  const open = Boolean(anchorEl);
-  const closeMenu = () => setAnchorEl(null);
+    const [anchorEl, setAnchorEl] = useState<HTMLElement | null>(null);
+    const triggerId = useId();
+    const menuId = useId();
+    const open = Boolean(anchorEl);
+    const closeMenu = () => setAnchorEl(null);
 
-  return (
-    <>
-      <SvButton
-        id={triggerId}
-        aria-haspopup="menu"
-        aria-expanded={open}
-        aria-controls={open ? menuId : undefined}
-        onClick={(event) => setAnchorEl(event.currentTarget)}
-      >
-        Действия
-      </SvButton>
-      <SvMenu
-        open={open}
-        anchorEl={anchorEl}
-        onClose={closeMenu}
-        slotProps={{ list: { id: menuId, 'aria-labelledby': triggerId } }}
-        items={[
-          {
-            id: 'close',
-            label: 'Закрыть меню',
-            description: 'Вернуться к настройкам',
-            icon: <CloseRounded />,
-            onClick: closeMenu,
-          },
-          { id: 'delete', label: 'Удалить трансляцию', disabled: true },
-        ]}
-      />
-      <SvSelect<number>
-        defaultValue={0}
-        inputProps={{ 'aria-label': 'Канал трансляции' }}
-        options={[
-          { value: 0, label: 'Основной канал', avatar: { children: 'S' } },
-          { value: 1, label: 'Резервный канал' },
-          { value: 2, label: 'Недоступный канал', disabled: true },
-        ]}
-      />
-      <SvTagInput
-        label="Теги"
-        defaultValue={['Эфир']}
-        options={['Эфир', 'Видео', 'Новости']}
-        helperText="Выберите подсказку или введите тег и нажмите Enter"
-        clearText="Очистить"
-      />
-    </>
-  );
+    return (
+        <>
+            <SvButton
+                id={triggerId}
+                aria-haspopup="menu"
+                aria-expanded={open}
+                aria-controls={open ? menuId : undefined}
+                onClick={(event) => setAnchorEl(event.currentTarget)}
+            >
+                Действия
+            </SvButton>
+            <SvMenu
+                open={open}
+                anchorEl={anchorEl}
+                onClose={closeMenu}
+                slotProps={{ list: { id: menuId, 'aria-labelledby': triggerId } }}
+                items={[
+                    {
+                        id: 'close',
+                        label: 'Закрыть меню',
+                        description: 'Вернуться к настройкам',
+                        icon: <CloseRounded />,
+                        onClick: closeMenu,
+                    },
+                    { id: 'delete', label: 'Удалить трансляцию', disabled: true },
+                ]}
+            />
+            <SvSelect<number>
+                defaultValue={0}
+                inputProps={{ 'aria-label': 'Канал трансляции' }}
+                options={[
+                    { value: 0, label: 'Основной канал', avatar: { children: 'S' } },
+                    { value: 1, label: 'Резервный канал' },
+                    { value: 2, label: 'Недоступный канал', disabled: true },
+                ]}
+            />
+            <SvTagInput
+                label="Теги"
+                defaultValue={['Эфир']}
+                options={['Эфир', 'Видео', 'Новости']}
+                helperText="Выберите подсказку или введите тег и нажмите Enter"
+                clearText="Очистить"
+            />
+        </>
+    );
 }
 ```
 
@@ -288,43 +249,33 @@ export function ListsExample() {
 Вызывайте `useSvColorScheme()` внутри провайдера. На первом рендере `mode` может быть `undefined`; учитывайте это при выводе переключателя. `systemMode` возвращает текущую системную схему, когда активен системный режим.
 
 ```tsx
-import {
-  SvButton,
-  SvThemeProvider,
-  useSvColorScheme,
-} from '@streamvi/streamvi-ui-kit';
+import { SvButton, SvThemeProvider, useSvColorScheme } from '@streamvi.io/streamvi-ui-kit';
 
 function ThemeControls() {
-  const { mode, setMode } = useSvColorScheme();
-  if (!mode) return null;
+    const { mode, setMode } = useSvColorScheme();
+    if (!mode) return null;
 
-  return (
-    <>
-      <SvButton
-        aria-pressed={mode === 'light'}
-        onClick={() => setMode('light')}
-      >
-        Светлая
-      </SvButton>
-      <SvButton aria-pressed={mode === 'dark'} onClick={() => setMode('dark')}>
-        Тёмная
-      </SvButton>
-      <SvButton
-        aria-pressed={mode === 'system'}
-        onClick={() => setMode('system')}
-      >
-        Системная
-      </SvButton>
-    </>
-  );
+    return (
+        <>
+            <SvButton aria-pressed={mode === 'light'} onClick={() => setMode('light')}>
+                Светлая
+            </SvButton>
+            <SvButton aria-pressed={mode === 'dark'} onClick={() => setMode('dark')}>
+                Тёмная
+            </SvButton>
+            <SvButton aria-pressed={mode === 'system'} onClick={() => setMode('system')}>
+                Системная
+            </SvButton>
+        </>
+    );
 }
 
 export function ThemeExample() {
-  return (
-    <SvThemeProvider defaultMode="system" disableTransitionOnChange>
-      <ThemeControls />
-    </SvThemeProvider>
-  );
+    return (
+        <SvThemeProvider defaultMode="system" disableTransitionOnChange>
+            <ThemeControls />
+        </SvThemeProvider>
+    );
 }
 ```
 
@@ -344,33 +295,28 @@ export function ThemeExample() {
 Передавайте настройки непосредственно в `createSvTheme`, а результат — в провайдер. Фабрика принимает стандартные опции темы MUI и токены StreamVi в `sv`: `accent`, `accentHover`, `surface`, `surfaceHover`, `stroke`, `green`, `greenHover`, `focus`.
 
 ```tsx
-import {
-  createSvTheme,
-  SvButton,
-  SvThemeProvider,
-  type SvThemeOptions,
-} from '@streamvi/streamvi-ui-kit';
+import { createSvTheme, SvButton, SvThemeProvider, type SvThemeOptions } from '@streamvi.io/streamvi-ui-kit';
 
 const options: SvThemeOptions = {
-  cssVariables: {
-    cssVarPrefix: 'sv',
-    colorSchemeSelector: 'data-mui-color-scheme',
-  },
-  colorSchemes: {
-    light: true,
-    dark: { palette: { background: { paper: '#202020' } } },
-  },
-  sv: { accent: '#7653c1', accentHover: '#6845b3' },
+    cssVariables: {
+        cssVarPrefix: 'sv',
+        colorSchemeSelector: 'data-mui-color-scheme',
+    },
+    colorSchemes: {
+        light: true,
+        dark: { palette: { background: { paper: '#202020' } } },
+    },
+    sv: { accent: '#7653c1', accentHover: '#6845b3' },
 };
 
 const theme = createSvTheme(options);
 
 export function CustomThemeExample() {
-  return (
-    <SvThemeProvider theme={theme} defaultMode="dark">
-      <SvButton>Сохранить</SvButton>
-    </SvThemeProvider>
-  );
+    return (
+        <SvThemeProvider theme={theme} defaultMode="dark">
+            <SvButton>Сохранить</SvButton>
+        </SvThemeProvider>
+    );
 }
 ```
 
@@ -387,33 +333,33 @@ export function CustomThemeExample() {
 Для локальных стилей используйте `sx`, для внутренних элементов — поддерживаемые `slotProps`. `sx` принимает объекты, массивы и функции от темы. Поля с типом `ReactNode`, например подписи и описания меню, могут принимать JSX. При полной замене через `slots` или `render*` сохраняйте необходимые props, refs и доступность элемента.
 
 ```tsx
-import { SvField, SvSelect, SvTagInput } from '@streamvi/streamvi-ui-kit';
+import { SvField, SvSelect, SvTagInput } from '@streamvi.io/streamvi-ui-kit';
 
 export function CustomizedExample() {
-  return (
-    <>
-      <SvField
-        label="Название"
-        sx={{ width: 320, maxWidth: '100%' }}
-        slotProps={{
-          input: { readOnly: true, sx: { borderRadius: '12px' } },
-          htmlInput: { maxLength: 120 },
-        }}
-      />
-      <SvTagInput
-        label="Теги"
-        defaultValue={['Эфир']}
-        clearText="Очистить"
-        slotProps={{ chip: { sx: { borderRadius: '12px' } } }}
-      />
-      <SvSelect
-        defaultValue="main"
-        inputProps={{ 'aria-label': 'Канал' }}
-        options={[{ value: 'main', label: 'Основной канал' }]}
-        MenuProps={{ slotProps: { paper: { sx: { borderRadius: '12px' } } } }}
-      />
-    </>
-  );
+    return (
+        <>
+            <SvField
+                label="Название"
+                sx={{ width: 320, maxWidth: '100%' }}
+                slotProps={{
+                    input: { readOnly: true, sx: { borderRadius: '12px' } },
+                    htmlInput: { maxLength: 120 },
+                }}
+            />
+            <SvTagInput
+                label="Теги"
+                defaultValue={['Эфир']}
+                clearText="Очистить"
+                slotProps={{ chip: { sx: { borderRadius: '12px' } } }}
+            />
+            <SvSelect
+                defaultValue="main"
+                inputProps={{ 'aria-label': 'Канал' }}
+                options={[{ value: 'main', label: 'Основной канал' }]}
+                MenuProps={{ slotProps: { paper: { sx: { borderRadius: '12px' } } } }}
+            />
+        </>
+    );
 }
 ```
 
@@ -433,7 +379,7 @@ export function CustomizedExample() {
 
 | Прежнее использование                                                                    | Актуальный API / необходимое изменение                                                                                                                                                                                                  |
 | ---------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Импорт `@streamvi/streamvi-ui-kit/style.css`                                             | Удалите его; стили подключаются через MUI/Emotion. Необязательный импорт `fonts.css` сохраняется.                                                                                                                                       |
+| Импорт `@streamvi.io/streamvi-ui-kit/style.css`                                          | Удалите его; стили подключаются через MUI/Emotion. Необязательный импорт `fonts.css` сохраняется.                                                                                                                                       |
 | Подключение без провайдера темы                                                          | Используйте `SvThemeProvider` для темы StreamVi либо совместимый MUI `ThemeProvider`.                                                                                                                                                   |
 | Button `styleType`, фирменные значения `variant`, размер `default`                       | Используйте MUI `variant="contained"`, `"outlined"` или `"text"`, `color`, фирменный `appearance` и размер `medium`. Прежний `variant="primary"` заменяется на `variant="contained" color="primary"`, `important` — на `color="error"`. |
 | Button `leftIcon/rightIcon`, `isPending`                                                 | Используйте `startIcon/endIcon`, `loading`.                                                                                                                                                                                             |
@@ -459,4 +405,4 @@ export function CustomizedExample() {
 - [Документация API StreamVi](https://dev.streamvi.io)
 - [Руководство по созданию плагинов StreamVi](https://streamvi.io/ru/docs/dev)
 - [Сообщество разработчиков StreamVi в Telegram](https://t.me/streamvi_plugins)
-- [Репозиторий GitHub](https://github.com/StreamVi/streamvi-ui)
+- [Репозиторий GitLab](https://gitlab.collabox.dev/streamvi/streamvi-ui-kit)

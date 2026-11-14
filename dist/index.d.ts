@@ -366,11 +366,47 @@ declare module '@mui/material/styles' {
 
 declare module '@mui/material/styles' {
     interface ComponentsPropsList {
-        SvButton: SvButtonProps;
+        SvRadio: SvRadioProps;
     }
     interface Components {
-        SvButton?: {
-            defaultProps?: Partial<SvButtonProps> | undefined;
+        SvRadio?: {
+            defaultProps?: Partial<SvRadioProps> | undefined;
+        } | undefined;
+    }
+}
+
+
+declare module '@mui/material/styles' {
+    interface ComponentsPropsList {
+        SvChip: SvChipProps;
+    }
+    interface Components {
+        SvChip?: {
+            defaultProps?: Partial<SvChipProps> | undefined;
+        } | undefined;
+    }
+}
+
+
+declare module '@mui/material/styles' {
+    interface ComponentsPropsList {
+        SvSlider: SvSliderProps;
+    }
+    interface Components {
+        SvSlider?: {
+            defaultProps?: Partial<SvSliderProps> | undefined;
+        } | undefined;
+    }
+}
+
+
+declare module '@mui/material/styles' {
+    interface ComponentsPropsList {
+        SvIconButton: SvIconButtonProps;
+    }
+    interface Components {
+        SvIconButton?: {
+            defaultProps?: Partial<SvIconButtonProps> | undefined;
         } | undefined;
     }
 }
@@ -402,59 +438,23 @@ declare module '@mui/material/styles' {
 
 declare module '@mui/material/styles' {
     interface ComponentsPropsList {
-        SvRadio: SvRadioProps;
-    }
-    interface Components {
-        SvRadio?: {
-            defaultProps?: Partial<SvRadioProps> | undefined;
-        } | undefined;
-    }
-}
-
-
-declare module '@mui/material/styles' {
-    interface ComponentsPropsList {
-        SvSlider: SvSliderProps;
-    }
-    interface Components {
-        SvSlider?: {
-            defaultProps?: Partial<SvSliderProps> | undefined;
-        } | undefined;
-    }
-}
-
-
-declare module '@mui/material/styles' {
-    interface ComponentsPropsList {
-        SvSwitch: SvSwitchProps;
-    }
-    interface Components {
-        SvSwitch?: {
-            defaultProps?: Partial<SvSwitchProps> | undefined;
-        } | undefined;
-    }
-}
-
-
-declare module '@mui/material/styles' {
-    interface ComponentsPropsList {
-        SvIconButton: SvIconButtonProps;
-    }
-    interface Components {
-        SvIconButton?: {
-            defaultProps?: Partial<SvIconButtonProps> | undefined;
-        } | undefined;
-    }
-}
-
-
-declare module '@mui/material/styles' {
-    interface ComponentsPropsList {
         SvMenu: SvMenuProps;
     }
     interface Components {
         SvMenu?: {
             defaultProps?: Partial<SvMenuProps> | undefined;
+        } | undefined;
+    }
+}
+
+
+declare module '@mui/material/styles' {
+    interface ComponentsPropsList {
+        SvButton: SvButtonProps;
+    }
+    interface Components {
+        SvButton?: {
+            defaultProps?: Partial<SvButtonProps> | undefined;
         } | undefined;
     }
 }
@@ -486,11 +486,11 @@ declare module '@mui/material/styles' {
 
 declare module '@mui/material/styles' {
     interface ComponentsPropsList {
-        SvChip: SvChipProps;
+        SvNumberField: SvNumberFieldProps;
     }
     interface Components {
-        SvChip?: {
-            defaultProps?: Partial<SvChipProps> | undefined;
+        SvNumberField?: {
+            defaultProps?: Partial<SvNumberFieldProps> | undefined;
         } | undefined;
     }
 }
@@ -498,11 +498,11 @@ declare module '@mui/material/styles' {
 
 declare module '@mui/material/styles' {
     interface ComponentsPropsList {
-        SvNumberField: SvNumberFieldProps;
+        SvSwitch: SvSwitchProps;
     }
     interface Components {
-        SvNumberField?: {
-            defaultProps?: Partial<SvNumberFieldProps> | undefined;
+        SvSwitch?: {
+            defaultProps?: Partial<SvSwitchProps> | undefined;
         } | undefined;
     }
 }

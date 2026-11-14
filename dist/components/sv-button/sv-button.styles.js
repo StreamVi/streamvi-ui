@@ -1,7 +1,7 @@
 import { svTokens as e } from "../../theme/tokens.js";
 import { buttonColors as t, buttonFocus as n, buttonReducedMotion as r, buttonSize as i } from "../shared/button-shared.js";
 import { buttonClasses as a } from "@mui/material/Button";
-//#region src/components/sv-button/sv-button.styles.ts
+// src/components/sv-button/sv-button.styles.ts
 var o = 24 / Math.sin(Math.PI / 3), s = {
 	position: "absolute",
 	width: "1px",
@@ -31,7 +31,9 @@ function c(c, l) {
 		}
 		k = f === "tooltip" ? "rgba(0,0,0,0.7)" : O, A = O, j = k;
 	}
-	let M = _ && v === "mui" && y === "center", N = p === "contained" ? O : A, P = {
+	let M = _ && v === "mui" && y === "center", N = p === "contained" ? O : A, P = p === "contained" ? k : j, F = 12, I = "5px 11px";
+	m === "small" ? (F = 8, I = "1px 7px") : m === "large" && (F = 16, I = "9px 15px");
+	let L = {
 		fontFamily: c.typography.fontFamily ?? "Inter, sans-serif",
 		textTransform: "none",
 		fontWeight: 500,
@@ -41,7 +43,7 @@ function c(c, l) {
 		borderRadius: "8px",
 		boxSizing: "border-box",
 		minWidth: 0,
-		padding: `${(S - 24) / 2}px ${m === "small" ? 8 : m === "large" ? 16 : 12}px`,
+		padding: `${(S - 24) / 2}px ${F}px`,
 		position: "relative",
 		isolation: "isolate",
 		overflow: "hidden",
@@ -67,33 +69,33 @@ function c(c, l) {
 		[`&.${a.disabled}`]: { opacity: _ ? 1 : .5 },
 		[`& .${a.loadingIndicator}`]: M && h === "inherit" ? {} : { color: N }
 	};
-	if ((p === "contained" || p === "outlined" || p === "text") && Object.assign(P, {
+	if ((p === "contained" || p === "outlined" || p === "text") && Object.assign(L, {
 		color: M ? "transparent" : N,
 		background: p === "contained" ? E : "transparent",
 		"&:hover": {
 			background: p === "contained" ? D : "transparent",
-			color: M ? "transparent" : p === "contained" ? k : j
+			color: M ? "transparent" : P
 		},
 		[`&.${a.disabled}`]: {
 			opacity: _ ? 1 : .5,
 			color: M ? "transparent" : N,
 			background: p === "contained" ? E : "transparent"
 		}
-	}), p === "outlined" && Object.assign(P, {
+	}), p === "outlined" && Object.assign(L, {
 		border: `1px solid ${A}`,
-		padding: m === "small" ? "1px 7px" : m === "large" ? "9px 15px" : "5px 11px"
-	}), x && Object.assign(P, {
+		padding: I
+	}), x && Object.assign(L, {
 		padding: 0,
 		borderRadius: 0,
 		fontSize: m === "large" ? "15px" : "12px",
 		lineHeight: m === "large" ? "24px" : "16px",
 		letterSpacing: 0
-	}), b && f === "secondary" && p === "contained" && (P[`&.${a.disabled}`] = {
+	}), b && f === "secondary" && p === "contained" && (L[`&.${a.disabled}`] = {
 		opacity: 1,
 		background: D,
 		color: M ? "transparent" : O,
 		..._ ? {} : { [`& .SvButton-label, & .${a.icon}`]: { opacity: .5 } }
-	}), _ && v === "stripes" && Object.assign(P, {
+	}), _ && v === "stripes" && Object.assign(L, {
 		[`&.${a.disabled}`]: {
 			opacity: 1,
 			color: O,
@@ -116,13 +118,13 @@ function c(c, l) {
 			zIndex: 1
 		},
 		[`& .${a.loadingIndicator}`]: s
-	}), _ && v === "text" && (P["& .SvButton-label"] = s, P[`& .${a.icon}`] = { display: "none" }, v === "text" && Object.assign(P, {
+	}), _ && v === "text" && (L["& .SvButton-label"] = s, L[`& .${a.icon}`] = { display: "none" }, v === "text" && Object.assign(L, {
 		width: l.fullWidth ? "100%" : "16px",
 		height: "16px",
 		padding: 0
 	})), v === "mui" && y !== "center") {
-		let e = x ? 0 : (m === "small" ? 8 : m === "large" ? 16 : 12) - (p === "outlined");
-		P[`& .${a.loadingIndicator}`] = {
+		let e = x ? 0 : F - +(p === "outlined");
+		L[`& .${a.loadingIndicator}`] = {
 			color: N,
 			...l.fullWidth ? {
 				position: "relative",
@@ -133,9 +135,8 @@ function c(c, l) {
 			} : { [y === "start" ? "left" : "right"]: `${e}px` }
 		};
 	}
-	return P["@media (prefers-reduced-motion: reduce)"] = r, P;
+	return L["@media (prefers-reduced-motion: reduce)"] = r, L;
 }
-//#endregion
 export { c as buttonStyles };
 
 //# sourceMappingURL=sv-button.styles.js.map

@@ -1,20 +1,25 @@
 {
-  "name": "@streamvi/streamvi-ui-kit",
+  "name": "@streamvi.io/streamvi-ui-kit",
+  "version": "2.0.0",
   "private": false,
-  "version": "0.0.0",
-  "type": "module",
   "description": "StreamVi UI components for React and Material UI",
+  "homepage": "https://github.com/StreamVi/streamvi-ui#readme",
   "license": "MIT",
-  "module": "./dist/index.js",
-  "types": "./dist/index.d.ts",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/StreamVi/streamvi-ui.git"
+  },
   "files": [
     "dist",
     "README.ru.md",
     "THIRD-PARTY-NOTICES.md"
   ],
+  "type": "module",
   "sideEffects": [
     "**/*.css"
   ],
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
   "exports": {
     ".": {
       "types": "./dist/index.d.ts",
@@ -27,6 +32,7 @@
     "./fonts/inter.woff2": "./dist/fonts/inter.woff2"
   },
   "publishConfig": {
+    "registry": "https://registry.npmjs.org/",
     "access": "public"
   },
   "dependencies": {
@@ -42,5 +48,8 @@
     "@mui/material": "^9.5.0",
     "react": "^19.3.0",
     "react-dom": "^19.3.0"
+  },
+  "bugs": {
+    "url": "https://github.com/StreamVi/streamvi-ui/issues"
   }
 }

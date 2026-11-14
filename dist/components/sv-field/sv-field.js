@@ -10,7 +10,7 @@ import re from "@mui/material/FormControl";
 import ie from "@mui/material/FormHelperText";
 import u from "@mui/material/InputLabel";
 import ae from "@mui/material/OutlinedInput";
-//#region src/components/sv-field/sv-field.tsx
+// src/components/sv-field/sv-field.tsx
 function d(e, t) {
 	return typeof e == "function" ? e(t) : e;
 }
@@ -133,7 +133,6 @@ var f = o(function(o, f) {
 		]
 	});
 });
-//#endregion
 export { f as SvField, d as resolveFieldSlot };
 
 //# sourceMappingURL=sv-field.js.map

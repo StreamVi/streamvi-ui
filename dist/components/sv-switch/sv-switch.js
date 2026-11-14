@@ -7,7 +7,7 @@ import { jsx as a } from "react/jsx-runtime";
 import { buttonBaseClasses as o } from "@mui/material/ButtonBase";
 import { mergeSlotProps as s } from "@mui/material/utils";
 import c, { switchClasses as l } from "@mui/material/Switch";
-//#region src/components/sv-switch/sv-switch.tsx
+// src/components/sv-switch/sv-switch.tsx
 var u = `&:has(> .${l.switchBase}.${l.checked})`, d = `&:has(> .${l.switchBase}.${l.disabled})`;
 function f(t) {
 	return {
@@ -48,8 +48,8 @@ var p = {
 		props: g,
 		name: "MuiSwitch"
 	}), C = (t) => {
-		let n = (t.vars ?? t).palette, r = n[x], i = x === "primary" ? e(t).green : r && typeof r == "object" && "main" in r ? r.main : n.text.secondary;
-		return {
+		let n = (t.vars ?? t).palette, r = n[x], i = n.text.secondary;
+		return x === "primary" ? i = e(t).green : r && typeof r == "object" && "main" in r && (i = r.main), {
 			width: b === "small" ? 40 : 42,
 			height: b === "small" ? 24 : 28,
 			padding: b === "small" ? "7px" : "7px 4px",
@@ -116,7 +116,6 @@ var p = {
 		}
 	});
 });
-//#endregion
 export { h as SvSwitch };
 
 //# sourceMappingURL=sv-switch.js.map

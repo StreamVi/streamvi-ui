@@ -5,7 +5,7 @@ import { mergeSx as r } from "merge-sx";
 import { forwardRef as i } from "react";
 import { jsx as a } from "react/jsx-runtime";
 import o from "@mui/material/IconButton";
-//#region src/components/sv-icon-button/sv-icon-button.tsx
+// src/components/sv-icon-button/sv-icon-button.tsx
 var s = i(function(i, s) {
 	let c = t({
 		props: {},
@@ -40,7 +40,6 @@ var s = i(function(i, s) {
 		})
 	});
 });
-//#endregion
 export { s as SvIconButton };
 
 //# sourceMappingURL=sv-icon-button.js.map

@@ -1,4 +1,4 @@
-//#region src/theme/tokens.ts
+// src/theme/tokens.ts
 function e(e) {
 	let t = (e.vars ?? e).palette;
 	return e.vars?.sv ?? e.sv ?? {
@@ -12,7 +12,6 @@ function e(e) {
 		focus: t.primary.main
 	};
 }
-//#endregion
 export { e as svTokens };
 
 //# sourceMappingURL=tokens.js.map

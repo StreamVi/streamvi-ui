@@ -5,7 +5,7 @@ import r from "@mui/material/FormControl";
 import i from "@mui/material/FormHelperText";
 import { c as a } from "react/compiler-runtime";
 import o from "@mui/material/FormLabel";
-//#region src/components/sv-radio-group/field-layout.tsx
+// src/components/sv-radio-group/field-layout.tsx
 var s = {
 	gap: "4px",
 	minWidth: 0,
@@ -57,7 +57,6 @@ var s = {
 		sx: u
 	}), o[5] = s, o[6] = r, o[7] = u, o[8] = d) : d = o[8], d;
 });
-//#endregion
 export { f as FieldHelp, d as FieldLabel, u as FieldRoot };
 
 //# sourceMappingURL=field-layout.js.map

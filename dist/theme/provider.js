@@ -3,7 +3,7 @@ import { useMemo as t } from "react";
 import { jsx as n } from "react/jsx-runtime";
 import { StyledEngineProvider as r, THEME_ID as i, ThemeProvider as a } from "@mui/material/styles";
 import { useTheme as o } from "@emotion/react";
-//#region src/theme/provider.tsx
+// src/theme/provider.tsx
 var s = e({
 	cssVariables: {
 		cssVarPrefix: "sv",
@@ -28,7 +28,6 @@ function c({ children: e, theme: c = s, injectFirst: l = !0, defaultMode: u = "l
 		})
 	});
 }
-//#endregion
 export { c as SvThemeProvider };
 
 //# sourceMappingURL=provider.js.map

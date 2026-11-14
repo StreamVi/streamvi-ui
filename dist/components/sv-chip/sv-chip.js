@@ -8,7 +8,7 @@ import o from "@mui/icons-material/CheckRounded";
 import { mergeSlotProps as s } from "@mui/material/utils";
 import c from "@mui/icons-material/CloseRounded";
 import l from "@mui/material/Chip";
-//#region src/components/sv-chip/sv-chip.tsx
+// src/components/sv-chip/sv-chip.tsx
 var u = i(function(i, u) {
 	let d = t({
 		props: {},
@@ -49,7 +49,6 @@ var u = i(function(i, u) {
 		}
 	});
 });
-//#endregion
 export { u as SvChip };
 
 //# sourceMappingURL=sv-chip.js.map

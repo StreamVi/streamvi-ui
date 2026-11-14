@@ -1,6 +1,6 @@
 import { svTokens as e } from "../../theme/tokens.js";
 import { chipClasses as t } from "@mui/material/Chip";
-//#region src/components/sv-chip/sv-chip.styles.ts
+// src/components/sv-chip/sv-chip.styles.ts
 function n(n, { color: r, size: i, variant: a }) {
 	let o = e(n), s = (n.vars ?? n).palette, c = r === "default", l = a === "filled", u = `var(--SvChip-surface, ${o.surface})`, d = `var(--SvChip-surface-hover, ${o.surfaceHover})`, f = c ? `var(--SvChip-icon-color, ${s.text.secondary})` : "inherit";
 	return {
@@ -43,7 +43,6 @@ function n(n, { color: r, size: i, variant: a }) {
 		}
 	};
 }
-//#endregion
 export { n as chipStyles };
 
 //# sourceMappingURL=sv-chip.styles.js.map

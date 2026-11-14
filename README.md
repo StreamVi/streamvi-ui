@@ -8,8 +8,10 @@ StreamVi UI Kit is a library of 14 React components built on Material UI for cre
 
 ## Installation
 
+The public package belongs to the npm organization **streamvi.io**.
+
 ```sh
-npm install @streamvi/streamvi-ui-kit
+npm install @streamvi.io/streamvi-ui-kit
 ```
 
 The application must provide compatible peer dependencies:
@@ -33,26 +35,25 @@ The minimum supported React and React DOM version is 19.3.0. Upgrade both packag
 
 TypeScript declarations support `moduleResolution: Bundler` and `NodeNext`. With MUI 9.5, combining `exactOptionalPropertyTypes: true` with `skipLibCheck: false` exposes errors in MUI's Collapse/Fade declarations. Use `skipLibCheck: true` with exact optional checking, or disable `exactOptionalPropertyTypes` when checking all dependency declarations. The library's package checks cover both configurations.
 
-If the package is not available on npm, install a version from GitHub that includes the built package:
+Pin a version with `npm install @streamvi.io/streamvi-ui-kit@2.0.0`, or install the built GitHub tag with `npm install github:StreamVi/streamvi-ui#v2.0.0 --allow-git=all`. npm 12 requires explicit permission for Git dependencies; registry installs need no such flag. Check updates with `npm outdated @streamvi.io/streamvi-ui-kit`. [Version tags](https://github.com/StreamVi/streamvi-ui/tags).
 
-```sh
-npm install github:StreamVi/streamvi-ui
-```
+**Version 2 migration:** replace the dependency and every import of `@streamvi/streamvi-ui-kit` with `@streamvi.io/streamvi-ui-kit`, including `/fonts.css`. Remove the old `@streamvi` registry mapping when it is no longer used. The React component API is unchanged by this rename. Private GitLab consumers must configure the new `@streamvi.io` scope.
 
 ## Quick start
 
 Wrap your interface in `SvThemeProvider`. Optionally import `fonts.css` once in the application entry point to load the bundled Inter font.
 
 ```tsx
-import { SvButton, SvThemeProvider } from '@streamvi/streamvi-ui-kit';
-import '@streamvi/streamvi-ui-kit/fonts.css'; // Optional: bundled Inter font
+import { SvButton, SvThemeProvider } from '@streamvi.io/streamvi-ui-kit';
+
+import '@streamvi.io/streamvi-ui-kit/fonts.css'; // Optional: bundled Inter font
 
 export function App() {
-  return (
-    <SvThemeProvider defaultMode="light">
-      <SvButton>Create stream</SvButton>
-    </SvThemeProvider>
-  );
+    return (
+        <SvThemeProvider defaultMode="light">
+            <SvButton>Create stream</SvButton>
+        </SvThemeProvider>
+    );
 }
 ```
 
@@ -62,7 +63,7 @@ The default provider includes the StreamVi theme with CSS variables and light/da
 
 ## Components
 
-Import components and their public types from `@streamvi/streamvi-ui-kit`.
+Import components and their public types from `@streamvi.io/streamvi-ui-kit`.
 
 | Component       | Main props                                                                                               |
 | --------------- | -------------------------------------------------------------------------------------------------------- |
@@ -94,34 +95,25 @@ Render each example inside `SvThemeProvider`, as in the quick start. These four 
 Pass button text through `children`, adjacent icons through `startIcon/endIcon`, chip content through `label`, and tooltip content through `title`. The selected chip is controlled by application state.
 
 ```tsx
-import { useState } from 'react';
 import AddRounded from '@mui/icons-material/AddRounded';
 import HelpOutlineRounded from '@mui/icons-material/HelpOutlineRounded';
-import {
-  SvButton,
-  SvChip,
-  SvIconButton,
-  SvTooltip,
-} from '@streamvi/streamvi-ui-kit';
+import { SvButton, SvChip, SvIconButton, SvTooltip } from '@streamvi.io/streamvi-ui-kit';
+import { useState } from 'react';
 
 export function ActionsExample() {
-  const [selected, setSelected] = useState(false);
+    const [selected, setSelected] = useState(false);
 
-  return (
-    <>
-      <SvButton startIcon={<AddRounded />}>Create stream</SvButton>
-      <SvTooltip title="Configure channels before starting the stream">
-        <SvIconButton aria-label="Stream help">
-          <HelpOutlineRounded />
-        </SvIconButton>
-      </SvTooltip>
-      <SvChip
-        label="Favorite"
-        selected={selected}
-        onClick={() => setSelected((current) => !current)}
-      />
-    </>
-  );
+    return (
+        <>
+            <SvButton startIcon={<AddRounded />}>Create stream</SvButton>
+            <SvTooltip title="Configure channels before starting the stream">
+                <SvIconButton aria-label="Stream help">
+                    <HelpOutlineRounded />
+                </SvIconButton>
+            </SvTooltip>
+            <SvChip label="Favorite" selected={selected} onClick={() => setSelected((current) => !current)} />
+        </>
+    );
 }
 ```
 
@@ -130,25 +122,15 @@ export function ActionsExample() {
 Labels, helper text, and number adjustment buttons are styled by the components. `SvField.onChange` receives an event; read its `target.value`. `SvNumberField.onChange(event, value)` receives `number | null` when a value is committed on blur, Enter, arrow keys, or the adjustment buttons. Empty input produces `null`; invalid input is reverted, and numeric values are clamped to `min/max`.
 
 ```tsx
-import { SvField, SvNumberField } from '@streamvi/streamvi-ui-kit';
+import { SvField, SvNumberField } from '@streamvi.io/streamvi-ui-kit';
 
 export function FieldsExample() {
-  return (
-    <>
-      <SvField
-        label="Stream title"
-        defaultValue="Evening stream"
-        helperText="Viewers will see this title"
-      />
-      <SvNumberField
-        label="Repeat count"
-        defaultValue={2}
-        min={0}
-        max={10}
-        step={1}
-      />
-    </>
-  );
+    return (
+        <>
+            <SvField label="Stream title" defaultValue="Evening stream" helperText="Viewers will see this title" />
+            <SvNumberField label="Repeat count" defaultValue={2} min={0} max={10} step={1} />
+        </>
+    );
 }
 ```
 
@@ -158,53 +140,37 @@ export function FieldsExample() {
 
 ```tsx
 import FormControlLabel from '@mui/material/FormControlLabel';
-import {
-  SvCheckbox,
-  SvRadio,
-  SvRadioGroup,
-  SvSlider,
-  SvSwitch,
-} from '@streamvi/streamvi-ui-kit';
+import { SvCheckbox, SvRadio, SvRadioGroup, SvSlider, SvSwitch } from '@streamvi.io/streamvi-ui-kit';
 
 export function SettingsExample() {
-  return (
-    <>
-      <FormControlLabel
-        label="Notify subscribers"
-        control={<SvCheckbox defaultChecked />}
-      />
-      <FormControlLabel
-        label="Record stream"
-        control={<SvSwitch defaultChecked />}
-      />
-      <SvRadioGroup
-        name="quality"
-        label="Quality"
-        defaultValue="hd"
-        options={[
-          { value: 'hd', label: 'HD' },
-          { value: 'sd', label: 'SD' },
-        ]}
-      />
-      <SvRadioGroup
-        name="format"
-        aria-label="Stream format"
-        defaultValue="video"
-      >
-        <FormControlLabel value="video" label="Video" control={<SvRadio />} />
-        <FormControlLabel value="audio" label="Audio" control={<SvRadio />} />
-      </SvRadioGroup>
-      <SvSlider
-        aria-label="Volume"
-        defaultValue={50}
-        valueLabelDisplay="auto"
-        marks={[
-          { value: 0, label: '0%' },
-          { value: 100, label: '100%' },
-        ]}
-      />
-    </>
-  );
+    return (
+        <>
+            <FormControlLabel label="Notify subscribers" control={<SvCheckbox defaultChecked />} />
+            <FormControlLabel label="Record stream" control={<SvSwitch defaultChecked />} />
+            <SvRadioGroup
+                name="quality"
+                label="Quality"
+                defaultValue="hd"
+                options={[
+                    { value: 'hd', label: 'HD' },
+                    { value: 'sd', label: 'SD' },
+                ]}
+            />
+            <SvRadioGroup name="format" aria-label="Stream format" defaultValue="video">
+                <FormControlLabel value="video" label="Video" control={<SvRadio />} />
+                <FormControlLabel value="audio" label="Audio" control={<SvRadio />} />
+            </SvRadioGroup>
+            <SvSlider
+                aria-label="Volume"
+                defaultValue={50}
+                valueLabelDisplay="auto"
+                marks={[
+                    { value: 0, label: '0%' },
+                    { value: 100, label: '100%' },
+                ]}
+            />
+        </>
+    );
 }
 ```
 
@@ -213,67 +179,62 @@ export function SettingsExample() {
 `SvMenu.items`, `SvSelect.options`, and `SvTagInput.options` accept data. Menu descriptions, select avatars, and tags are styled automatically. Close a menu from the item handler when needed: clicking an item does not change `open` or call `onClose` automatically. The select and tags below use uncontrolled state.
 
 ```tsx
-import { useId, useState } from 'react';
 import CloseRounded from '@mui/icons-material/CloseRounded';
-import {
-  SvButton,
-  SvMenu,
-  SvSelect,
-  SvTagInput,
-} from '@streamvi/streamvi-ui-kit';
+import { SvButton, SvMenu, SvSelect, SvTagInput } from '@streamvi.io/streamvi-ui-kit';
+import { useId, useState } from 'react';
 
 export function ListsExample() {
-  const [anchorEl, setAnchorEl] = useState<HTMLElement | null>(null);
-  const triggerId = useId();
-  const menuId = useId();
-  const open = Boolean(anchorEl);
-  const closeMenu = () => setAnchorEl(null);
+    const [anchorEl, setAnchorEl] = useState<HTMLElement | null>(null);
+    const triggerId = useId();
+    const menuId = useId();
+    const open = Boolean(anchorEl);
+    const closeMenu = () => setAnchorEl(null);
 
-  return (
-    <>
-      <SvButton
-        id={triggerId}
-        aria-haspopup="menu"
-        aria-expanded={open}
-        aria-controls={open ? menuId : undefined}
-        onClick={(event) => setAnchorEl(event.currentTarget)}
-      >
-        Actions
-      </SvButton>
-      <SvMenu
-        open={open}
-        anchorEl={anchorEl}
-        onClose={closeMenu}
-        slotProps={{ list: { id: menuId, 'aria-labelledby': triggerId } }}
-        items={[
-          {
-            id: 'close',
-            label: 'Close menu',
-            description: 'Return to settings',
-            icon: <CloseRounded />,
-            onClick: closeMenu,
-          },
-          { id: 'delete', label: 'Delete stream', disabled: true },
-        ]}
-      />
-      <SvSelect<number>
-        defaultValue={0}
-        inputProps={{ 'aria-label': 'Stream channel' }}
-        options={[
-          { value: 0, label: 'Main channel', avatar: { children: 'S' } },
-          { value: 1, label: 'Backup channel' },
-          { value: 2, label: 'Unavailable channel', disabled: true },
-        ]}
-      />
-      <SvTagInput
-        label="Tags"
-        defaultValue={['Stream']}
-        options={['Stream', 'Video', 'News']}
-        helperText="Choose a suggestion or type a tag and press Enter"
-        clearText="Clear"
-      />
-    </>
-  );
+    return (
+        <>
+            <SvButton
+                id={triggerId}
+                aria-haspopup="menu"
+                aria-expanded={open}
+                aria-controls={open ? menuId : undefined}
+                onClick={(event) => setAnchorEl(event.currentTarget)}
+            >
+                Actions
+            </SvButton>
+            <SvMenu
+                open={open}
+                anchorEl={anchorEl}
+                onClose={closeMenu}
+                slotProps={{ list: { id: menuId, 'aria-labelledby': triggerId } }}
+                items={[
+                    {
+                        id: 'close',
+                        label: 'Close menu',
+                        description: 'Return to settings',
+                        icon: <CloseRounded />,
+                        onClick: closeMenu,
+                    },
+                    { id: 'delete', label: 'Delete stream', disabled: true },
+                ]}
+            />
+            <SvSelect<number>
+                defaultValue={0}
+                inputProps={{ 'aria-label': 'Stream channel' }}
+                options={[
+                    { value: 0, label: 'Main channel', avatar: { children: 'S' } },
+                    { value: 1, label: 'Backup channel' },
+                    { value: 2, label: 'Unavailable channel', disabled: true },
+                ]}
+            />
+            <SvTagInput
+                label="Tags"
+                defaultValue={['Stream']}
+                options={['Stream', 'Video', 'News']}
+                helperText="Choose a suggestion or type a tag and press Enter"
+                clearText="Clear"
+            />
+        </>
+    );
 }
 ```
 
@@ -288,43 +249,33 @@ export function ListsExample() {
 Call `useSvColorScheme()` inside the provider. `mode` can be `undefined` on the first render; account for that when rendering a switcher. `systemMode` reports the resolved system preference when system mode is active.
 
 ```tsx
-import {
-  SvButton,
-  SvThemeProvider,
-  useSvColorScheme,
-} from '@streamvi/streamvi-ui-kit';
+import { SvButton, SvThemeProvider, useSvColorScheme } from '@streamvi.io/streamvi-ui-kit';
 
 function ThemeControls() {
-  const { mode, setMode } = useSvColorScheme();
-  if (!mode) return null;
+    const { mode, setMode } = useSvColorScheme();
+    if (!mode) return null;
 
-  return (
-    <>
-      <SvButton
-        aria-pressed={mode === 'light'}
-        onClick={() => setMode('light')}
-      >
-        Light
-      </SvButton>
-      <SvButton aria-pressed={mode === 'dark'} onClick={() => setMode('dark')}>
-        Dark
-      </SvButton>
-      <SvButton
-        aria-pressed={mode === 'system'}
-        onClick={() => setMode('system')}
-      >
-        System
-      </SvButton>
-    </>
-  );
+    return (
+        <>
+            <SvButton aria-pressed={mode === 'light'} onClick={() => setMode('light')}>
+                Light
+            </SvButton>
+            <SvButton aria-pressed={mode === 'dark'} onClick={() => setMode('dark')}>
+                Dark
+            </SvButton>
+            <SvButton aria-pressed={mode === 'system'} onClick={() => setMode('system')}>
+                System
+            </SvButton>
+        </>
+    );
 }
 
 export function ThemeExample() {
-  return (
-    <SvThemeProvider defaultMode="system" disableTransitionOnChange>
-      <ThemeControls />
-    </SvThemeProvider>
-  );
+    return (
+        <SvThemeProvider defaultMode="system" disableTransitionOnChange>
+            <ThemeControls />
+        </SvThemeProvider>
+    );
 }
 ```
 
@@ -344,33 +295,28 @@ The built-in theme uses the `sv` CSS variable prefix and `data-mui-color-scheme`
 Pass configuration directly to `createSvTheme`, then pass the result to the provider. It accepts standard MUI theme options plus StreamVi tokens in `sv`: `accent`, `accentHover`, `surface`, `surfaceHover`, `stroke`, `green`, `greenHover`, and `focus`.
 
 ```tsx
-import {
-  createSvTheme,
-  SvButton,
-  SvThemeProvider,
-  type SvThemeOptions,
-} from '@streamvi/streamvi-ui-kit';
+import { createSvTheme, SvButton, SvThemeProvider, type SvThemeOptions } from '@streamvi.io/streamvi-ui-kit';
 
 const options: SvThemeOptions = {
-  cssVariables: {
-    cssVarPrefix: 'sv',
-    colorSchemeSelector: 'data-mui-color-scheme',
-  },
-  colorSchemes: {
-    light: true,
-    dark: { palette: { background: { paper: '#202020' } } },
-  },
-  sv: { accent: '#7653c1', accentHover: '#6845b3' },
+    cssVariables: {
+        cssVarPrefix: 'sv',
+        colorSchemeSelector: 'data-mui-color-scheme',
+    },
+    colorSchemes: {
+        light: true,
+        dark: { palette: { background: { paper: '#202020' } } },
+    },
+    sv: { accent: '#7653c1', accentHover: '#6845b3' },
 };
 
 const theme = createSvTheme(options);
 
 export function CustomThemeExample() {
-  return (
-    <SvThemeProvider theme={theme} defaultMode="dark">
-      <SvButton>Save</SvButton>
-    </SvThemeProvider>
-  );
+    return (
+        <SvThemeProvider theme={theme} defaultMode="dark">
+            <SvButton>Save</SvButton>
+        </SvThemeProvider>
+    );
 }
 ```
 
@@ -387,33 +333,33 @@ For server rendering, configure the initial color-scheme attribute and Emotion c
 Use `sx` for local styles and supported `slotProps` for internal elements. `sx` accepts objects, arrays, and theme callbacks. Fields that accept `ReactNode`, such as labels and menu descriptions, can also receive JSX. Full replacements through `slots` or `render*` must preserve the required props, refs, and accessibility behavior.
 
 ```tsx
-import { SvField, SvSelect, SvTagInput } from '@streamvi/streamvi-ui-kit';
+import { SvField, SvSelect, SvTagInput } from '@streamvi.io/streamvi-ui-kit';
 
 export function CustomizedExample() {
-  return (
-    <>
-      <SvField
-        label="Title"
-        sx={{ width: 320, maxWidth: '100%' }}
-        slotProps={{
-          input: { readOnly: true, sx: { borderRadius: '12px' } },
-          htmlInput: { maxLength: 120 },
-        }}
-      />
-      <SvTagInput
-        label="Tags"
-        defaultValue={['Stream']}
-        clearText="Clear"
-        slotProps={{ chip: { sx: { borderRadius: '12px' } } }}
-      />
-      <SvSelect
-        defaultValue="main"
-        inputProps={{ 'aria-label': 'Channel' }}
-        options={[{ value: 'main', label: 'Main channel' }]}
-        MenuProps={{ slotProps: { paper: { sx: { borderRadius: '12px' } } } }}
-      />
-    </>
-  );
+    return (
+        <>
+            <SvField
+                label="Title"
+                sx={{ width: 320, maxWidth: '100%' }}
+                slotProps={{
+                    input: { readOnly: true, sx: { borderRadius: '12px' } },
+                    htmlInput: { maxLength: 120 },
+                }}
+            />
+            <SvTagInput
+                label="Tags"
+                defaultValue={['Stream']}
+                clearText="Clear"
+                slotProps={{ chip: { sx: { borderRadius: '12px' } } }}
+            />
+            <SvSelect
+                defaultValue="main"
+                inputProps={{ 'aria-label': 'Channel' }}
+                options={[{ value: 'main', label: 'Main channel' }]}
+                MenuProps={{ slotProps: { paper: { sx: { borderRadius: '12px' } } } }}
+            />
+        </>
+    );
 }
 ```
 
@@ -433,7 +379,7 @@ React and React DOM 19.3.0 or later within React 19 are required. Update the app
 
 | Previous usage                                                                  | Current API / required change                                                                                                                                                                                               |
 | ------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Importing `@streamvi/streamvi-ui-kit/style.css`                                 | Remove it; styles are provided by MUI/Emotion. The optional `fonts.css` import remains supported.                                                                                                                           |
+| Importing `@streamvi.io/streamvi-ui-kit/style.css`                              | Remove it; styles are provided by MUI/Emotion. The optional `fonts.css` import remains supported.                                                                                                                           |
 | Setup without a theme provider                                                  | Use `SvThemeProvider` for the StreamVi theme, or a compatible MUI `ThemeProvider`.                                                                                                                                          |
 | Button `styleType`, custom `variant` values, size `default`                     | Use MUI `variant="contained"`, `"outlined"`, or `"text"`, `color`, StreamVi `appearance`, and size `medium`. Former `variant="primary"` becomes `variant="contained" color="primary"`; `important` becomes `color="error"`. |
 | Button `leftIcon/rightIcon`, `isPending`                                        | Use `startIcon/endIcon`, `loading`.                                                                                                                                                                                         |
@@ -459,5 +405,4 @@ The library is distributed under the MIT license; see `LICENSE` in the package. 
 - [StreamVi API documentation](https://dev.streamvi.io)
 - [StreamVi plugin development guide](https://streamvi.io/ru/docs/dev)
 - [StreamVi developer community on Telegram](https://t.me/streamvi_plugins)
-- [GitHub repository](https://github.com/StreamVi/streamvi-ui)
--
+- [GitLab repository](https://gitlab.collabox.dev/streamvi/streamvi-ui-kit)

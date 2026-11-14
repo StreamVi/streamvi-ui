@@ -4,7 +4,7 @@ import { mergeSx as n } from "merge-sx";
 import { jsx as r, jsxs as i } from "react/jsx-runtime";
 import { c as a } from "react/compiler-runtime";
 import o from "@mui/material/Avatar";
-//#region src/components/sv-select/select-option-content.tsx
+// src/components/sv-select/select-option-content.tsx
 var s = {
 	display: "inline-flex",
 	alignItems: "center",
@@ -53,7 +53,6 @@ function l(l) {
 		children: [g, v]
 	}), u[10] = g, u[11] = v, u[12] = y) : y = u[12], y;
 }
-//#endregion
 export { l as SelectOptionContent };
 
 //# sourceMappingURL=select-option-content.js.map

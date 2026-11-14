@@ -10,7 +10,7 @@ import c from "@mui/icons-material/RemoveRounded";
 import { buttonBaseClasses as l } from "@mui/material/ButtonBase";
 import u, { checkboxClasses as d } from "@mui/material/Checkbox";
 import { mergeSlotProps as f } from "@mui/material/utils";
-//#region src/components/sv-checkbox/sv-checkbox.tsx
+// src/components/sv-checkbox/sv-checkbox.tsx
 var p = {
 	small: 16,
 	medium: 20,
@@ -46,7 +46,7 @@ var p = {
 		name: "MuiCheckbox"
 	}), j = p[D] ?? p.small, M = i((t) => {
 		let n = (t.vars ?? t).palette, r = n[O], i = r && typeof r == "object" && "main" in r ? r.main : n.text.secondary;
-		return {
+		return O === "primary" ? i = "var(--SvCheckbox-accent)" : O === "default" && (i = n.text.secondary), {
 			padding: "4px",
 			minWidth: 24,
 			minHeight: 24,
@@ -54,7 +54,7 @@ var p = {
 			"--SvCheckbox-accent": e(t).accent,
 			"--SvCheckbox-stroke": e(t).stroke,
 			"--SvCheckbox-foreground": "#fff",
-			"--SvCheckbox-fill": O === "primary" ? "var(--SvCheckbox-accent)" : O === "default" ? n.text.secondary : i,
+			"--SvCheckbox-fill": i,
 			[`&.${l.focusVisible}`]: {
 				outline: `2px solid ${e(t).focus}`,
 				outlineOffset: 2
@@ -107,7 +107,6 @@ var p = {
 		}
 	});
 });
-//#endregion
 export { _ as SvCheckbox };
 
 //# sourceMappingURL=sv-checkbox.js.map

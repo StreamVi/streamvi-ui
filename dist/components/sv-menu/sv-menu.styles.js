@@ -5,7 +5,7 @@ import { menuItemClasses as r } from "@mui/material/MenuItem";
 import { avatarClasses as i } from "@mui/material/Avatar";
 import { dividerClasses as a } from "@mui/material/Divider";
 import { svgIconClasses as o } from "@mui/material/SvgIcon";
-//#region src/components/sv-menu/sv-menu.styles.ts
+// src/components/sv-menu/sv-menu.styles.ts
 function s(t) {
 	let n = (t.vars ?? t).palette;
 	return {
@@ -109,7 +109,6 @@ var c = {
 	padding: 0,
 	listStyle: "none"
 };
-//#endregion
 export { f as menuGroupStyles, d as menuHeaderStyles, u as menuItemStyles, l as menuListStyles, c as menuPaperStyles, s as menuRootStyles };
 
 //# sourceMappingURL=sv-menu.styles.js.map
