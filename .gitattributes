@@ -1,1 +1,10 @@
 * text=auto eol=lf
+
+# Preserve the verified package bytes through Git add and checkout.
+/dist/** -text -filter -ident -working-tree-encoding
+/package.json -text -filter -ident -working-tree-encoding
+/README.md -text -filter -ident -working-tree-encoding
+/README.ru.md -text -filter -ident -working-tree-encoding
+/LICENSE -text -filter -ident -working-tree-encoding
+/THIRD-PARTY-NOTICES.md -text -filter -ident -working-tree-encoding
+/.release.json -text -filter -ident -working-tree-encoding
