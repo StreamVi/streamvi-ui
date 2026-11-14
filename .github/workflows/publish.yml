@@ -1,0 +1,39 @@
+name: Publish organization package
+
+on:
+  push:
+    tags:
+      - 'v*'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  id-token: write
+
+concurrency:
+  group: streamvi-ui-npm-release
+  queue: max
+  cancel-in-progress: false
+
+jobs:
+  publish:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v6
+        with:
+          node-version: '26.13.1'
+          registry-url: 'https://registry.npmjs.org'
+          package-manager-cache: false
+      - run: npm install --global npm@12.2.2
+      - name: Validate runner and package without publishing
+        if: github.event_name == 'workflow_dispatch'
+        run: |
+          node .github/scripts/publish-npm.mjs --preflight
+          if test -f .release.json; then node .github/scripts/publish-npm.mjs; fi
+      - name: Publish verified stable package
+        if: github.event_name == 'push' && github.ref_type == 'tag'
+        run: node .github/scripts/publish-npm.mjs --publish
