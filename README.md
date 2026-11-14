@@ -35,7 +35,7 @@ The minimum supported React and React DOM version is 19.3.0. Upgrade both packag
 
 TypeScript declarations support `moduleResolution: Bundler` and `NodeNext`. With MUI 9.5, combining `exactOptionalPropertyTypes: true` with `skipLibCheck: false` exposes errors in MUI's Collapse/Fade declarations. Use `skipLibCheck: true` with exact optional checking, or disable `exactOptionalPropertyTypes` when checking all dependency declarations. The library's package checks cover both configurations.
 
-Pin a version with `npm install @streamvi.io/streamvi-ui-kit@2.0.0`, or install the built GitHub tag with `npm install github:StreamVi/streamvi-ui#v2.0.0 --allow-git=all`. npm 12 requires explicit permission for Git dependencies; registry installs need no such flag. Check updates with `npm outdated @streamvi.io/streamvi-ui-kit`. [Version tags](https://github.com/StreamVi/streamvi-ui/tags).
+Pin a version with `npm install @streamvi.io/streamvi-ui-kit@2.0.1`, or install the built GitHub tag with `npm install github:StreamVi/streamvi-ui#v2.0.1 --allow-git=all`. npm 12 requires explicit permission for Git dependencies; registry installs need no such flag. Check updates with `npm outdated @streamvi.io/streamvi-ui-kit`. [Version tags](https://github.com/StreamVi/streamvi-ui/tags).
 
 **Version 2 migration:** replace the dependency and every import of `@streamvi/streamvi-ui-kit` with `@streamvi.io/streamvi-ui-kit`, including `/fonts.css`. Remove the old `@streamvi` registry mapping when it is no longer used. The React component API is unchanged by this rename. Private GitLab consumers must configure the new `@streamvi.io` scope.
 

@@ -35,7 +35,7 @@ npm install react@^19.3.0 react-dom@^19.3.0 @mui/material@^9.5.0 @mui/icons-mate
 
 Если приложение уже использует MUI и Emotion, сохраните его прямые зависимости и согласуйте их версии с этими диапазонами, чтобы приложение и UI Kit использовали совместимые экземпляры библиотек.
 
-Фиксированная версия: `npm install @streamvi.io/streamvi-ui-kit@2.0.0`. Готовая сборка из GitHub: `npm install github:StreamVi/streamvi-ui#v2.0.0 --allow-git=all`. В npm 12 Git-зависимости требуют явного разрешения; для установки из registry этот флаг не нужен. Проверка обновлений: `npm outdated @streamvi.io/streamvi-ui-kit`. [Теги версий](https://github.com/StreamVi/streamvi-ui/tags).
+Фиксированная версия: `npm install @streamvi.io/streamvi-ui-kit@2.0.1`. Готовая сборка из GitHub: `npm install github:StreamVi/streamvi-ui#v2.0.1 --allow-git=all`. В npm 12 Git-зависимости требуют явного разрешения; для установки из registry этот флаг не нужен. Проверка обновлений: `npm outdated @streamvi.io/streamvi-ui-kit`. [Теги версий](https://github.com/StreamVi/streamvi-ui/tags).
 
 **Переход на версию 2:** замените зависимость и все импорты `@streamvi/streamvi-ui-kit` на `@streamvi.io/streamvi-ui-kit`, включая `/fonts.css`. Удалите старую привязку registry для `@streamvi`, если она больше не нужна. Переименование не меняет API React-компонентов. Для приватного GitLab Registry настройте новый scope `@streamvi.io`.
 

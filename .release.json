@@ -1,10 +1,10 @@
 {
   "schema": 1,
   "name": "@streamvi.io/streamvi-ui-kit",
-  "version": "2.0.0",
-  "tag": "v2.0.0",
-  "gitHead": "9db2b795ef2e52a91810d0bc2d65ce675ddff8c3",
-  "sourceSha256": "db6fb31068235a892e14bf6b833bcd589c7ab4ea9a39a0f989686c59c84131aa",
+  "version": "2.0.1",
+  "tag": "v2.0.1",
+  "gitHead": "a42ee52f2d6930535bb29dbe3e7a5381645bf65f",
+  "sourceSha256": "909a3cb542c5f22e9f681cfdf2e00ceb761f9dab351fb3de49161ff71bce574f",
   "files": {
     "dist/components/shared/button-shared.js": "53fc99133ef3636343f7f3dae5d689b702491e366f2d673ba838e8846fe5e550",
     "dist/components/shared/button-shared.js.map": "956d7f55045d3d8183c0e982ddb2b7aef6d56633590f6d260158a50dbf12cbb7",
@@ -62,7 +62,7 @@
     "dist/fonts.css.d.ts": "8e609bb71c20b858c77f0e9f90bb1319db8477b13f9f965f1a1e18524bf50881",
     "dist/fonts/inter.woff2": "2a54364257349b6c145fa4dd7ec41d3e0b8ab3144205b6f0cd58578aa370e671",
     "dist/fonts/OFL.txt": "262481e844521b326f5ecd053e59b98c8b2da78c8ee1bdbb6e8174305e54935a",
-    "dist/index.d.ts": "648ffbbe3419a10fe115341f2051a36284c9421d2fde671bc045fc294c56a1c8",
+    "dist/index.d.ts": "22ed7fd1f000d974ad9068c3c2491bbca2a8346d75c2b58f29d5e4b03cadbd4d",
     "dist/index.js": "4a6d86855fdd7fe252934b4097a4305932de48b1b89ce6f2f91821ce1f8a5662",
     "dist/theme/create-theme.js": "23f20aa3c76f6a198d48870a736b3c960bf8acf955749dcd26f02ad90d8d830b",
     "dist/theme/create-theme.js.map": "13868040d8fc3becc3775e7df574f98638a63fc352d2ba3a182e0ee3a095daca",
@@ -74,9 +74,9 @@
     "dist/theme/tokens.js": "67371f4abd55fc60472b0d8a9ec382af428f57329748361dba0f00d3b550bedc",
     "dist/theme/tokens.js.map": "01336a62e74629163221e40442b27a8a8c81458958b51bb563b86ce9ee76b4b8",
     "LICENSE": "2fc7de9c23207d49b8bb1f48c327bafebb96ce3f58c72e414f996ab2c3b19ddd",
-    "package.json": "c0254eab4a2676f2b3de099f3961d64d381a8e1ece17d1afe2b95f75bae80f31",
-    "README.md": "0eb4786a67a7eacf6382a4510ac8d46b5ae809ef14e40b341b125025bc779e91",
-    "README.ru.md": "5600d69e6e71a5adb305a551c7b126569aeb773f0185c74d2634b0c88348fa0e",
+    "package.json": "3f2ab8287c08a25d4badc3a7d8b1c6c601f8268b02f7fdd0f5bde84a22690b91",
+    "README.md": "a8fd8f3d4bd3bf4d7b0364a798b0907426ca807d29511e2fc697f14d5cb9f8df",
+    "README.ru.md": "80b2ff57059c236fba5607e588fa944f2a9c5df4d77b33dba88231b1a9b8d337",
     "THIRD-PARTY-NOTICES.md": "22dea90b3869e17de1658abcef13ac85a31778135771ff471f64dbfb51d0ac62"
   }
 }
