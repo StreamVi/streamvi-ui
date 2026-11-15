@@ -8,8 +8,15 @@ import { join } from 'node:path';
 export const packageName = '@streamvi.io/streamvi-ui-kit';
 export const repositoryUrl = 'git+https://github.com/StreamVi/streamvi-ui.git';
 export const registryUrl = 'https://registry.npmjs.org/';
-export const packageRoots = ['dist', 'package.json', 'README.md', 'README.ru.md', 'LICENSE', 'THIRD-PARTY-NOTICES.md'];
+const legacyRoots = ['dist', 'package.json', 'README.md', 'README.ru.md', 'LICENSE', 'THIRD-PARTY-NOTICES.md'];
+export const packageRoots = [...legacyRoots, 'CHANGELOG.md'];
 const stable = /^[1-9]\d*\.(0|[1-9]\d*)\.(0|[1-9]\d*)$/;
+
+/** Preserve the exact old payload contract when recovering immutable schema 1 releases. */
+export function packageRootsForSchema(schema) {
+  assert(schema === 1 || schema === 2, 'Unsupported public release schema');
+  return schema === 1 ? legacyRoots : packageRoots;
+}
 
 /** Validate stable release numbers before using them in paths, refs or commands. */
 export function assertVersion(version) {
@@ -34,7 +41,7 @@ export function checksum(bytes) {
 }
 
 /** Read only regular package files; never follow symlinks from artifacts or checkouts. */
-export async function packageHashes(directory) {
+export async function packageHashes(directory, schema = 2) {
   const files = [];
   const visit = async (name) => {
     assert(/^[\w./-]+$/.test(name) && !name.split('/').includes('..'), 'Unsafe package path');
@@ -49,7 +56,8 @@ export async function packageHashes(directory) {
       files.push([name, checksum(await readFile(path))]);
     }
   };
-  for (const name of packageRoots) await visit(name);
+  if (schema === 1) assert(!(await readdir(directory)).includes('CHANGELOG.md'), 'Unexpected legacy package content');
+  for (const name of packageRootsForSchema(schema)) await visit(name);
   return Object.fromEntries(files.toSorted(([a], [b]) => a.localeCompare(b, 'en')));
 }
 
@@ -77,7 +85,7 @@ export async function extractPackage(archive, destination) {
 }
 
 /** Validate the installable manifest independently from its checksum record. */
-async function readManifest(directory, version, publicRegistry) {
+async function readManifest(directory, version, publicRegistry, schema) {
   const manifest = JSON.parse(await readFile(join(directory, 'package.json'), 'utf8'));
   assert(manifest.name === packageName && manifest.version === version, 'Package name/version mismatch');
   assert(!manifest.private, 'Public package must not be private');
@@ -86,7 +94,7 @@ async function readManifest(directory, version, publicRegistry) {
   }
   assert.deepEqual(
     manifest.files,
-    ['dist', 'README.ru.md', 'THIRD-PARTY-NOTICES.md'],
+    ['dist', 'README.ru.md', 'THIRD-PARTY-NOTICES.md', ...(schema === 2 ? ['CHANGELOG.md'] : [])],
     'Unexpected package files allowlist'
   );
   if (publicRegistry) {
@@ -107,14 +115,16 @@ export async function preparePublicRelease(cwd, metadata) {
   const destination = join(cwd, 'artifacts/public');
   await rm(destination, { recursive: true, force: true });
   const directory = await extractPackage(join(cwd, archive), destination);
-  const original = await packageHashes(directory);
-  const manifest = await readManifest(directory, metadata.version, false);
+  const archiveManifest = JSON.parse(await readFile(join(directory, 'package.json'), 'utf8'));
+  const schema = archiveManifest.files?.includes('CHANGELOG.md') ? 2 : 1;
+  const original = await packageHashes(directory, schema);
+  const manifest = await readManifest(directory, metadata.version, false, schema);
   manifest.publishConfig = { registry: registryUrl, access: 'public' };
   manifest.repository = { type: 'git', url: repositoryUrl };
   manifest.homepage = 'https://github.com/StreamVi/streamvi-ui#readme';
   manifest.bugs = { url: 'https://github.com/StreamVi/streamvi-ui/issues' };
   await writeFile(join(directory, 'package.json'), `${JSON.stringify(manifest, null, 2)}\n`);
-  const files = await packageHashes(directory);
+  const files = await packageHashes(directory, schema);
   for (const [name, hash] of Object.entries(original)) {
     if (name !== 'package.json') assert.equal(files[name], hash, `Changed source file: ${name}`);
   }
@@ -122,7 +132,7 @@ export async function preparePublicRelease(cwd, metadata) {
     join(directory, '.release.json'),
     `${JSON.stringify(
       {
-        schema: 1,
+        schema,
         name: packageName,
         version: metadata.version,
         tag: metadata.tag,
@@ -142,23 +152,23 @@ export async function preparePublicRelease(cwd, metadata) {
 export async function verifyPublicRelease(directory, tag) {
   const metadata = JSON.parse(await readFile(join(directory, '.release.json'), 'utf8'));
   assertVersion(metadata.version);
-  assert(metadata.schema === 1 && metadata.name === packageName, 'Invalid public release metadata');
+  assert([1, 2].includes(metadata.schema) && metadata.name === packageName, 'Invalid public release metadata');
   assert(metadata.tag === `v${metadata.version}` && metadata.tag === tag, 'Release tag/version mismatch');
   assert(
     /^[a-f0-9]{40}$/.test(metadata.gitHead) && /^[a-f0-9]{64}$/.test(metadata.sourceSha256),
     'Invalid source identity'
   );
-  assert.deepEqual(await packageHashes(directory), metadata.files, 'Public content checksum mismatch');
-  await readManifest(directory, metadata.version, true);
+  assert.deepEqual(await packageHashes(directory, metadata.schema), metadata.files, 'Public content checksum mismatch');
+  await readManifest(directory, metadata.version, true, metadata.schema);
   return metadata;
 }
 
 /** Compare installed/published tar content, independent of gzip metadata and npm signatures. */
-export async function verifyPublishedArchive(archive, expectedFiles) {
+export async function verifyPublishedArchive(archive, expectedFiles, schema = 2) {
   const temporary = await mkdtemp(join(tmpdir(), 'streamvi-published-'));
   try {
     const directory = await extractPackage(archive, temporary);
-    assert.deepEqual(await packageHashes(directory), expectedFiles, 'Published content checksum mismatch');
+    assert.deepEqual(await packageHashes(directory, schema), expectedFiles, 'Published content checksum mismatch');
   } finally {
     await rm(temporary, { recursive: true, force: true });
   }
