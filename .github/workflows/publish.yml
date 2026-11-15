@@ -8,7 +8,6 @@ on:
 
 permissions:
   contents: read
-  id-token: write
 
 concurrency:
   group: streamvi-ui-npm-release
@@ -17,6 +16,12 @@ concurrency:
 
 jobs:
   publish:
+    permissions:
+      contents: read
+      id-token: write
+    outputs:
+      result: ${{ steps.npm.outputs.result }}
+      version: ${{ steps.npm.outputs.version }}
     runs-on: ubuntu-24.04
     timeout-minutes: 15
     steps:
@@ -35,5 +40,27 @@ jobs:
           node .github/scripts/publish-npm.mjs --preflight
           if test -f .release.json; then node .github/scripts/publish-npm.mjs; fi
       - name: Publish verified stable package
+        id: npm
         if: github.event_name == 'push' && github.ref_type == 'tag'
         run: node .github/scripts/publish-npm.mjs --publish
+
+  release:
+    needs: publish
+    if: github.event_name == 'push' && github.ref_type == 'tag' && (needs.publish.outputs.result == 'published' || needs.publish.outputs.result == 'unchanged')
+    permissions:
+      contents: write
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v6
+        with:
+          node-version: '26.13.1'
+          package-manager-cache: false
+      - name: Publish verified GitHub Release
+        env:
+          GH_TOKEN: ${{ github.token }}
+          RELEASE_VERSION: ${{ needs.publish.outputs.version }}
+        run: node .github/scripts/github-release.mjs --version "$RELEASE_VERSION" --publish

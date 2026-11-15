@@ -1,6 +1,6 @@
 import assert from 'node:assert/strict';
 import { execFileSync } from 'node:child_process';
-import { mkdtemp, readFile, rm, writeFile } from 'node:fs/promises';
+import { appendFile, mkdtemp, readFile, rm, writeFile } from 'node:fs/promises';
 import { tmpdir } from 'node:os';
 import { basename, join, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
@@ -115,6 +115,8 @@ async function main() {
       ? 'Bootstrap required: publish this checked stable archive interactively, then configure npm Trusted Publishing before the next release.'
       : result
   );
+  if (process.env.GITHUB_OUTPUT)
+    await appendFile(process.env.GITHUB_OUTPUT, `result=${result}\nversion=${record.version}\n`);
   if (process.env.GITHUB_STEP_SUMMARY) {
     await writeFile(process.env.GITHUB_STEP_SUMMARY, `Package ${record.name}@${record.version}: ${result}\n`);
   }
