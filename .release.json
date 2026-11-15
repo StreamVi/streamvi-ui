@@ -1,11 +1,12 @@
 {
-  "schema": 1,
+  "schema": 2,
   "name": "@streamvi.io/streamvi-ui-kit",
-  "version": "2.0.2",
-  "tag": "v2.0.2",
-  "gitHead": "45bc473935198a92de499c9fb14a46e09d241795",
-  "sourceSha256": "a5c4271989416496174abd135f38304cb820478a2a0bf72b202f20222f0a2d6f",
+  "version": "2.0.3",
+  "tag": "v2.0.3",
+  "gitHead": "97514a1d3fa9dc626fe16b2218e4a24d398bf78a",
+  "sourceSha256": "83c104dfee0be0328f04fdf5e31a77d50257c27ae5a39e80fa091185ba2ed7e1",
   "files": {
+    "CHANGELOG.md": "d1ae2624c5e21e85d4470e0a3de2600a49b72759affb11f93265194e605d0281",
     "dist/components/shared/button-shared.js": "53fc99133ef3636343f7f3dae5d689b702491e366f2d673ba838e8846fe5e550",
     "dist/components/shared/button-shared.js.map": "956d7f55045d3d8183c0e982ddb2b7aef6d56633590f6d260158a50dbf12cbb7",
     "dist/components/sv-button/sv-button.js": "702013ec9b326700de6044e74523a7829b2a6262f7ab82fe585ee90ec76f059d",
@@ -62,7 +63,7 @@
     "dist/fonts.css.d.ts": "8e609bb71c20b858c77f0e9f90bb1319db8477b13f9f965f1a1e18524bf50881",
     "dist/fonts/inter.woff2": "2a54364257349b6c145fa4dd7ec41d3e0b8ab3144205b6f0cd58578aa370e671",
     "dist/fonts/OFL.txt": "262481e844521b326f5ecd053e59b98c8b2da78c8ee1bdbb6e8174305e54935a",
-    "dist/index.d.ts": "b1627e6b2fff0bbc9314e2766370f08cc8941dfb8d28f6066de142a1bf5f5781",
+    "dist/index.d.ts": "1b699b8756ec3ee5ff54a774e3687210bd6d026bc664d8052e678b6aa723d1c8",
     "dist/index.js": "4a6d86855fdd7fe252934b4097a4305932de48b1b89ce6f2f91821ce1f8a5662",
     "dist/theme/create-theme.js": "23f20aa3c76f6a198d48870a736b3c960bf8acf955749dcd26f02ad90d8d830b",
     "dist/theme/create-theme.js.map": "13868040d8fc3becc3775e7df574f98638a63fc352d2ba3a182e0ee3a095daca",
@@ -74,9 +75,9 @@
     "dist/theme/tokens.js": "67371f4abd55fc60472b0d8a9ec382af428f57329748361dba0f00d3b550bedc",
     "dist/theme/tokens.js.map": "01336a62e74629163221e40442b27a8a8c81458958b51bb563b86ce9ee76b4b8",
     "LICENSE": "2fc7de9c23207d49b8bb1f48c327bafebb96ce3f58c72e414f996ab2c3b19ddd",
-    "package.json": "596d74a001a3ad1d579a74ed274c3d6ce92ffaa9b163cb76dcbc9a7f3278244a",
-    "README.md": "2c3dd83fabf02f0f23e327ebadf30479661736d4fcc08ae77e4496c8c66224e6",
-    "README.ru.md": "c13a439083f432e9303a1218922f2a7a5a11de09b0c938d250d50d45559bd991",
+    "package.json": "16a8f6bcd7a372f8d4ddfff09f639f56e38940a59ee3ec134eee9d6839ee7132",
+    "README.md": "f959d5ccdf5dac4fdcd69c780419cb142ff18ea862c945750270011d878c38b0",
+    "README.ru.md": "aefa9a8259601df7165182624df7e6d6b2f853e16dee8802187b846ca7022803",
     "THIRD-PARTY-NOTICES.md": "22dea90b3869e17de1658abcef13ac85a31778135771ff471f64dbfb51d0ac62"
   }
 }

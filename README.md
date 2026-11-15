@@ -8,6 +8,8 @@
 
 [Русская версия](README.ru.md)
 
+[Changelog](CHANGELOG.md) — notable changes and migration notes for public package releases.
+
 StreamVi UI Kit is a library of 14 React components built on Material UI for creating StreamVi interfaces and plugins with a consistent visual style, light and dark themes, and TypeScript support.
 
 > **BREAKING CHANGE — major redesign.** This version replaces the previous Base UI implementation with Material UI. Theme setup, component props, events, and customization have changed. Existing applications need migration before upgrading; see [Upgrading from the previous version](#upgrading-from-the-previous-version).

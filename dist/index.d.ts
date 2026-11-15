@@ -354,11 +354,11 @@ export { }
 
 declare module '@mui/material/styles' {
     interface ComponentsPropsList {
-        SvCheckbox: SvCheckboxProps;
+        SvButton: SvButtonProps;
     }
     interface Components {
-        SvCheckbox?: {
-            defaultProps?: Partial<SvCheckboxProps> | undefined;
+        SvButton?: {
+            defaultProps?: Partial<SvButtonProps> | undefined;
         } | undefined;
     }
 }
@@ -366,11 +366,23 @@ declare module '@mui/material/styles' {
 
 declare module '@mui/material/styles' {
     interface ComponentsPropsList {
-        SvRadioGroup: SvRadioGroupProps;
+        SvField: SvFieldProps;
     }
     interface Components {
-        SvRadioGroup?: {
-            defaultProps?: Partial<SvRadioGroupProps> | undefined;
+        SvField?: {
+            defaultProps?: Partial<SvFieldProps> | undefined;
+        } | undefined;
+    }
+}
+
+
+declare module '@mui/material/styles' {
+    interface ComponentsPropsList {
+        SvMenu: SvMenuProps;
+    }
+    interface Components {
+        SvMenu?: {
+            defaultProps?: Partial<SvMenuProps> | undefined;
         } | undefined;
     }
 }
@@ -390,11 +402,11 @@ declare module '@mui/material/styles' {
 
 declare module '@mui/material/styles' {
     interface ComponentsPropsList {
-        SvButton: SvButtonProps;
+        SvSlider: SvSliderProps;
     }
     interface Components {
-        SvButton?: {
-            defaultProps?: Partial<SvButtonProps> | undefined;
+        SvSlider?: {
+            defaultProps?: Partial<SvSliderProps> | undefined;
         } | undefined;
     }
 }
@@ -414,6 +426,18 @@ declare module '@mui/material/styles' {
 
 declare module '@mui/material/styles' {
     interface ComponentsPropsList {
+        SvNumberField: SvNumberFieldProps;
+    }
+    interface Components {
+        SvNumberField?: {
+            defaultProps?: Partial<SvNumberFieldProps> | undefined;
+        } | undefined;
+    }
+}
+
+
+declare module '@mui/material/styles' {
+    interface ComponentsPropsList {
         SvSwitch: SvSwitchProps;
     }
     interface Components {
@@ -426,35 +450,11 @@ declare module '@mui/material/styles' {
 
 declare module '@mui/material/styles' {
     interface ComponentsPropsList {
-        SvSlider: SvSliderProps;
-    }
-    interface Components {
-        SvSlider?: {
-            defaultProps?: Partial<SvSliderProps> | undefined;
-        } | undefined;
-    }
-}
-
-
-declare module '@mui/material/styles' {
-    interface ComponentsPropsList {
         SvIconButton: SvIconButtonProps;
     }
     interface Components {
         SvIconButton?: {
             defaultProps?: Partial<SvIconButtonProps> | undefined;
-        } | undefined;
-    }
-}
-
-
-declare module '@mui/material/styles' {
-    interface ComponentsPropsList {
-        SvMenu: SvMenuProps;
-    }
-    interface Components {
-        SvMenu?: {
-            defaultProps?: Partial<SvMenuProps> | undefined;
         } | undefined;
     }
 }
@@ -486,11 +486,11 @@ declare module '@mui/material/styles' {
 
 declare module '@mui/material/styles' {
     interface ComponentsPropsList {
-        SvField: SvFieldProps;
+        SvCheckbox: SvCheckboxProps;
     }
     interface Components {
-        SvField?: {
-            defaultProps?: Partial<SvFieldProps> | undefined;
+        SvCheckbox?: {
+            defaultProps?: Partial<SvCheckboxProps> | undefined;
         } | undefined;
     }
 }
@@ -498,11 +498,11 @@ declare module '@mui/material/styles' {
 
 declare module '@mui/material/styles' {
     interface ComponentsPropsList {
-        SvNumberField: SvNumberFieldProps;
+        SvRadioGroup: SvRadioGroupProps;
     }
     interface Components {
-        SvNumberField?: {
-            defaultProps?: Partial<SvNumberFieldProps> | undefined;
+        SvRadioGroup?: {
+            defaultProps?: Partial<SvRadioGroupProps> | undefined;
         } | undefined;
     }
 }
