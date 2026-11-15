@@ -7,4 +7,5 @@
 /README.ru.md -text -filter -ident -working-tree-encoding
 /LICENSE -text -filter -ident -working-tree-encoding
 /THIRD-PARTY-NOTICES.md -text -filter -ident -working-tree-encoding
+/CHANGELOG.md -text -filter -ident -working-tree-encoding
 /.release.json -text -filter -ident -working-tree-encoding

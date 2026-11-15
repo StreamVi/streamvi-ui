@@ -28,7 +28,7 @@ export async function publishNpm({ directory, tag, publish = false, request = fe
     'Unexpected npm archive filename'
   );
   const archive = join(directory, pack.filename);
-  await verifyPublishedArchive(archive, metadata.files);
+  await verifyPublishedArchive(archive, metadata.files, metadata.schema);
   if (!publish) return 'validated';
   const response = await request(`${registryUrl}${encodeURIComponent(packageName)}`, {
     redirect: 'error',
@@ -60,7 +60,7 @@ export async function publishNpm({ directory, tag, publish = false, request = fe
     try {
       const published = join(temporary, 'published.tgz');
       await writeFile(published, new Uint8Array(await downloaded.arrayBuffer()));
-      await verifyPublishedArchive(published, metadata.files);
+      await verifyPublishedArchive(published, metadata.files, metadata.schema);
     } finally {
       await rm(temporary, { recursive: true, force: true });
     }
